@@ -1,0 +1,201 @@
+import { useState, MouseEvent } from "react";
+import { ZoomIn, X, MessageCircle, Heart, FolderCheck } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { ACTIVITIES_DATA, WHATSAPP_NUMBER } from "../data";
+import { ActivityPhoto } from "../types";
+
+export default function Galeri() {
+  const [selectedCategory, setSelectedCategory] = useState<string>("Semua");
+  const [selectedPhoto, setSelectedPhoto] = useState<ActivityPhoto | null>(null);
+  const [likedPhotos, setLikedPhotos] = useState<Record<string, boolean>>({});
+
+  const categories = ["Semua", "Seni & Kreativitas", "Imtaq & Karakter", "Sains & Lingkungan", "Olahraga & Fisik"];
+
+  const filteredPhotos = selectedCategory === "Semua"
+    ? ACTIVITIES_DATA
+    : ACTIVITIES_DATA.filter(photo => photo.category === selectedCategory);
+
+  const toggleLike = (id: string, e: MouseEvent) => {
+    e.stopPropagation();
+    setLikedPhotos(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  const handleAskAboutActivity = (photo: ActivityPhoto) => {
+    const customMessage = `Halo Admin Al Azzhar, saya melihat dokumentasi aktivitas anak mengenai "${photo.title}" (${photo.category}) di website. Boleh diceritakan lebih lanjut bagaimana rutinitas kegiatan tersebut berlangsung?`;
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(customMessage)}`;
+    window.open(url, "_blank", "referrer");
+  };
+
+  return (
+    <section
+      id="galeri"
+      className="py-16 md:py-24 bg-white scroll-mt-12"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="text-xs font-extrabold text-brand-purple uppercase tracking-widest bg-brand-purple/10 px-4 py-1.5 rounded-full inline-block mb-3">
+            Meriah & Menyenangkan
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-950 font-sans tracking-tight">
+            Galeri Kegiatan <span className="text-brand-purple">Si Kecil</span>
+          </h2>
+          <p className="text-gray-550 mt-4 text-base font-semibold max-w-xl mx-auto">
+            Dokumentasi orisinal aktivitas harian anak di sekolah. Pembelajaran seru dikemas cerdas untuk menyalakan potensi kepemimpinan si kecil.
+          </p>
+          <div className="w-16 h-1 bg-brand-purple mx-auto rounded-full mt-4" />
+        </div>
+
+        {/* Filter Categories Chips */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-10" id="gallery-filter-chips">
+          {categories.map((category) => (
+            <button
+              key={category}
+              id={`filter-chip-${category.toLowerCase().replace(/\s+/g, "")}`}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4.5 py-2.5 rounded-full text-xs font-extrabold transition-all cursor-pointer ${
+                category === selectedCategory
+                  ? "bg-brand-purple text-white shadow-md shadow-brand-purple/15"
+                  : "bg-gray-100 hover:bg-gray-200 text-gray-600"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Photos Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="gallery-photo-grid">
+          <AnimatePresence mode="popLayout">
+            {filteredPhotos.map((photo) => {
+              const isLiked = !!likedPhotos[photo.id];
+              return (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  key={photo.id}
+                  id={`gallery-item-${photo.id}`}
+                  onClick={() => setSelectedPhoto(photo)}
+                  className="group relative h-72 md:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-xs border border-gray-100 hover:shadow-md transition-shadow"
+                >
+                  <img
+                    src={photo.imageUrl}
+                    alt={photo.title}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  
+                  {/* Category Pill Overlays on top right */}
+                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs py-1 px-3 rounded-full text-[10px] font-bold text-brand-purple border border-brand-purple/10">
+                    {photo.category}
+                  </div>
+
+                  {/* Like Button Overlay on top left */}
+                  <button
+                    onClick={(e) => toggleLike(photo.id, e)}
+                    className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-xs flex items-center justify-center text-gray-400 hover:text-rose-500 transition-colors cursor-pointer"
+                    aria-label="Like photo"
+                    id={`btn-like-photo-${photo.id}`}
+                  >
+                    <Heart className={`w-4 h-4 ${isLiked ? "fill-rose-500 text-rose-500" : ""}`} />
+                  </button>
+
+                  {/* Sliding details block on bottom */}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 flex flex-col justify-end translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
+                    <span className="text-white font-extrabold text-sm leading-tight mb-1">
+                      {photo.title}
+                    </span>
+                    <p className="text-[11px] text-gray-200 font-medium line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {photo.description}
+                    </p>
+                    <div className="mt-2.5 flex items-center text-[10px] text-joy-yellow font-extrabold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <ZoomIn className="w-3.5 h-3.5 mr-1" />
+                      <span>Perbesar Dokumentasi</span>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
+
+        {/* Lightbox Overlay Drawer Component */}
+        <AnimatePresence>
+          {selectedPhoto && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              id="gallery-lightbox-modal"
+              className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+              onClick={() => setSelectedPhoto(null)}
+            >
+              <div
+                className="relative bg-white max-w-3xl w-full rounded-3xl overflow-hidden shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button top-right */}
+                <button
+                  onClick={() => setSelectedPhoto(null)}
+                  className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/80 flex items-center justify-center transition-colors cursor-pointer"
+                  id="btn-close-lightbox"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                {/* Display Body */}
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  <div className="h-64 sm:h-80 md:h-[400px] bg-gray-100">
+                    <img
+                      src={selectedPhoto.imageUrl}
+                      alt={selectedPhoto.title}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                      <span className="px-3 py-1 bg-brand-purple/10 text-brand-purple text-xs font-bold rounded-full inline-block mb-3.5">
+                        {selectedPhoto.category}
+                      </span>
+                      <h3 className="text-xl font-extrabold text-gray-900 leading-tight mb-3">
+                        {selectedPhoto.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 font-medium leading-relaxed">
+                        {selectedPhoto.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-8 pt-4 border-t border-gray-100">
+                      <p className="text-xs text-gray-400 font-semibold mb-3">
+                        Tertarik menerapkan bimbingan harian ini ke si buah hati?
+                      </p>
+                      <button
+                        id="btn-lightbox-ask-admin"
+                        onClick={() => handleAskAboutActivity(selectedPhoto)}
+                        className="w-full flex items-center justify-center space-x-2 bg-brand-whatsapp text-white py-3 rounded-xl font-extrabold text-xs shadow-md hover:bg-emerald-500 cursor-pointer transition-colors"
+                      >
+                        <MessageCircle className="w-4 h-4" />
+                        <span>Tanyakan Mengenai Kelas Ini</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+      </div>
+    </section>
+  );
+}

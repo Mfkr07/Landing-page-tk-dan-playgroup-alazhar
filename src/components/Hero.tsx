@@ -1,0 +1,207 @@
+import { ArrowRight, Star, Heart, Shield, CheckCircle } from "lucide-react";
+import { motion } from "motion/react";
+import { BRAND_DATA, WHATSAPP_NUMBER, WHATSAPP_TEMPLATE_DEFAULT } from "../data";
+
+export default function Hero() {
+  const handleRegisterClick = () => {
+    const customMessage = "Halo Admin Al Azzhar, saya ingin mendaftarkan anak saya. Bagaimana prosedur pendaftaran siswa baru untuk tahun ajaran aktif?";
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(customMessage)}`;
+    window.open(url, "_blank", "referrer");
+  };
+
+  const scrollToFasilitas = () => {
+    const element = document.getElementById("fasilitas");
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  return (
+    <section
+      id="hero"
+      className="relative min-h-screen pt-28 pb-16 md:pt-36 md:pb-24 lg:pt-40 lg:pb-32 bg-gradient-to-b from-brand-purple/5 via-white to-white overflow-hidden"
+    >
+      {/* Ambient background kids elements - hand crafted pastel blobs */}
+      <div className="absolute top-20 left-10 w-48 h-48 bg-joy-yellow/20 rounded-full filter blur-2xl -z-10 animate-pulse duration-[8s]" />
+      <div className="absolute right-10 top-40 w-72 h-72 bg-joy-pink/20 rounded-full filter blur-3xl -z-10 animate-bounce duration-[12s]" />
+      <div className="absolute left-[30%] bottom-10 w-64 h-64 bg-joy-green/20 rounded-full filter blur-2xl -z-10" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Column: Promos and Headings */}
+          <div className="lg:col-span-7 flex flex-col justify-center text-center lg:text-left">
+            {/* Promo Tag banner */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center self-center lg:self-start space-x-2 bg-brand-purple/10 border border-brand-purple/20 px-3.5 py-1.5 rounded-full mb-6"
+              id="hero-banner-accent"
+            >
+              <span className="w-2 h-2 rounded-full bg-brand-purple animate-ping" />
+              <span className="text-xs font-bold text-brand-purple uppercase tracking-wider">
+                Pendaftaran Tahun Ajaran Baru Dibuka!
+              </span>
+            </motion.div>
+
+            {/* Main Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6"
+              id="hero-main-heading"
+            >
+              Belajar Seru, <br />
+              Tumbuh Ceria di <br />
+              <span className="text-brand-purple relative inline-block">
+                {BRAND_DATA.name}
+                <svg
+                  className="absolute bottom-1 left-0 w-full h-3 text-joy-yellow -z-10 fill-current"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M0,7 C30,2 70,2 100,7 L100,10 L0,10 Z" />
+                </svg>
+              </span>
+            </motion.h1>
+
+            {/* Supportive Paragraph */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-base sm:text-lg text-gray-600 font-medium max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8"
+              id="hero-subtagline"
+            >
+              {BRAND_DATA.subTagline}
+            </motion.p>
+
+            {/* Call To Actions */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10"
+              id="hero-action-container"
+            >
+              {/* Primary: WhatsApp registered */}
+              <button
+                id="btn-hero-register"
+                onClick={handleRegisterClick}
+                className="w-full sm:w-auto px-8 py-4 bg-brand-purple text-white hover:bg-brand-purple/90 font-bold rounded-bubble shadow-lg hover:shadow-brand-purple/20 hover:scale-[1.02] transition-all cursor-pointer flex items-center justify-center space-x-2 text-base text-center"
+              >
+                <span>Daftar Sekarang Secara Instan</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+
+              {/* Secondary: scroll to fasilitas */}
+              <button
+                id="btn-hero-facilities"
+                onClick={scrollToFasilitas}
+                className="w-full sm:w-auto px-7 py-4 bg-white text-gray-700 hover:text-brand-purple border border-gray-200 hover:border-brand-purple/30 rounded-bubble font-bold hover:shadow-md transition-all cursor-pointer flex items-center justify-center space-x-1 text-base text-center"
+              >
+                <span>Lihat Fasilitas Kami</span>
+              </button>
+            </motion.div>
+
+            {/* Trust Badges - Stat Mini Pills */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="grid grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0"
+              id="hero-trust-badges"
+            >
+              <div className="flex flex-col items-center lg:items-start p-3 bg-white hover:shadow-sm border border-gray-100 rounded-2xl transition-all">
+                <div className="flex items-center space-x-1.5 mb-1 text-brand-purple">
+                  <CheckCircle className="w-4 h-4" />
+                  <span className="text-sm font-bold">AKREDITASI</span>
+                </div>
+                <span className="text-xl font-extrabold text-gray-800">Grade A</span>
+              </div>
+
+              <div className="flex flex-col items-center lg:items-start p-3 bg-white hover:shadow-sm border border-gray-100 rounded-2xl transition-all">
+                <div className="flex items-center space-x-1.5 mb-1 text-joy-green">
+                  <Star className="w-4 h-4 fill-joy-green" />
+                  <span className="text-sm font-bold">RASIO GURU</span>
+                </div>
+                <span className="text-xl font-extrabold text-gray-800">1 : 8 Anak</span>
+              </div>
+
+              <div className="flex flex-col items-center lg:items-start p-3 bg-white hover:shadow-sm border border-gray-100 rounded-2xl transition-all">
+                <div className="flex items-center space-x-1.5 mb-1 text-joy-pink">
+                  <Heart className="w-4 h-4 fill-joy-pink text-joy-pink" />
+                  <span className="text-sm font-bold">METODE</span>
+                </div>
+                <span className="text-xl font-extrabold text-gray-800">Joyful Play</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Beautiful High Fidelity Cover Grid */}
+          <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative w-full max-w-md lg:max-w-none"
+              id="hero-visual-frame"
+            >
+              {/* Outer play decorations */}
+              <div className="absolute -top-6 -left-6 w-12 h-12 rounded-2xl bg-joy-yellow flex items-center justify-center transform -rotate-12 shadow-md">
+                <Star className="w-6 h-6 text-white fill-white" />
+              </div>
+              <div className="absolute -bottom-6 right-8 w-14 h-14 rounded-full bg-joy-pink flex items-center justify-center transform rotate-12 shadow-lg">
+                <Heart className="w-7 h-7 text-white fill-white" />
+              </div>
+              <div className="absolute top-[40%] -right-4 w-10 h-10 rounded-xl bg-joy-green flex items-center justify-center transform rotate-45 shadow-sm">
+                <Shield className="w-5 h-5 text-white" />
+              </div>
+
+              {/* Main Styled Photo Container */}
+              <div className="bg-white p-3 rounded-bubble shadow-xl border border-gray-100 transform hover:rotate-1 transition-all duration-500">
+                <div className="overflow-hidden rounded-bubble aspect-symmetrical relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop"
+                    alt="Anak-anak gembira sedang belajar bersama guru di TK Al Azzhar Muara Enim"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-[360px] md:h-[420px] object-cover rounded-bubble hover:scale-105 transition-transform duration-700"
+                  />
+
+                  {/* Floating floating label in bottom block */}
+                  <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-brand-purple/5">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 rounded-full bg-joy-yellow flex items-center justify-center">
+                        <span className="text-base">🤗</span>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-gray-500 tracking-wider">LOKASI</p>
+                        <p className="text-sm font-extrabold text-brand-purple">Jl. Ahmad Yani No.49, Ps. I Muara Enim, Kec. Muara Enim, Kabupaten Muara Enim, Sumatera Selatan 31313</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tiny decorative sticker */}
+              <div className="absolute left-6 -bottom-4 bg-white px-4 py-2 rounded-full shadow-md border border-gray-100 flex items-center space-x-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                <span className="text-xs font-bold text-gray-600">Terakreditasi BAN-PAUD</span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
