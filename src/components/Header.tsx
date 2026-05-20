@@ -60,7 +60,7 @@ export default function Header() {
             >
               <div className="w-11 h-11 rounded-full bg-brand-purple flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-12 active:scale-95 transition-all duration-300 overflow-hidden border-2 border-brand-purple/20">
                 <img
-                  src="/logo.png"
+                  src="/public/images/logo.png"
                   alt="Logo Al Azzhar"
                   className="w-full h-full object-cover"
                 />
