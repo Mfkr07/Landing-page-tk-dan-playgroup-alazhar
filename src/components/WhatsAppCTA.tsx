@@ -98,25 +98,43 @@ export default function WhatsAppCTA() {
       </AnimatePresence>
 
       {/* 2. Primary Pulsating Circular WhatsApp Button */}
-      <motion.button
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => handleOpeningAction()}
-        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-whatsapp text-white flex items-center justify-center shadow-xl hover:bg-emerald-500 transition-all cursor-pointer relative"
-        aria-label="Chat admin on WhatsApp"
-        id="btn-floating-whatsapp-bubble"
-      >
-        {/* Pulsing ring layers */}
-        <span className="absolute inset-0 rounded-full bg-brand-whatsapp animate-ping opacity-25" />
-        <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8" />
-        
-        {/* Small orange unread marker notification */}
-        {!showPopover && !hasClosed && (
-          <span className="absolute top-0 right-0 w-3.5 h-3.5 bg-rose-500 rounded-full border-2 border-white flex items-center justify-center">
-            <span className="block w-1.5 h-1.5 bg-white rounded-full" />
-          </span>
-        )}
-      </motion.button>
+      <div className="relative group">
+        {/* Peeking Bee Mascot Head */}
+        <motion.div
+          animate={{
+            y: [0, -6, 0],
+            rotate: [15, 8, 15]
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute -top-6 -left-3 text-3xl select-none pointer-events-none z-20 filter drop-shadow-md"
+        >
+          🐝
+        </motion.div>
+
+        <motion.button
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => handleOpeningAction()}
+          className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-whatsapp text-white flex items-center justify-center shadow-xl hover:bg-emerald-500 transition-all cursor-pointer relative"
+          aria-label="Chat admin on WhatsApp"
+          id="btn-floating-whatsapp-bubble"
+        >
+          {/* Pulsing ring layers */}
+          <span className="absolute inset-0 rounded-full bg-brand-whatsapp animate-ping opacity-25" />
+          <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8" />
+          
+          {/* Small orange unread marker notification */}
+          {!showPopover && !hasClosed && (
+            <span className="absolute top-0 right-0 w-3.5 h-3.5 bg-rose-500 rounded-full border-2 border-white flex items-center justify-center">
+              <span className="block w-1.5 h-1.5 bg-white rounded-full" />
+            </span>
+          )}
+        </motion.button>
+      </div>
 
     </div>
   );

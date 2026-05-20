@@ -62,15 +62,47 @@ export default function Fasilitas() {
               return <BookOpen className="w-6 h-6 text-emerald-600" />;
             };
 
+            const getCardStyles = (id: string) => {
+              switch (id) {
+                case "fac-1":
+                  return {
+                    borderColor: "border-joy-yellow/60",
+                    hoverBorderColor: "hover:border-joy-yellow",
+                    stickerText: "Favorit! ⭐",
+                    stickerBg: "bg-joy-yellow text-amber-950"
+                  };
+                case "fac-2":
+                  return {
+                    borderColor: "border-joy-pink/60",
+                    hoverBorderColor: "hover:border-joy-pink",
+                    stickerText: "Populer! 💖",
+                    stickerBg: "bg-joy-pink text-white"
+                  };
+                default:
+                  return {
+                    borderColor: "border-joy-green/60",
+                    hoverBorderColor: "hover:border-joy-green",
+                    stickerText: "Terbaik! 📚",
+                    stickerBg: "bg-joy-green text-emerald-950"
+                  };
+              }
+            };
+
             const isSelected = selectedFacility === facility.id;
+            const cardStyles = getCardStyles(facility.id);
 
             return (
               <motion.div
                 key={facility.id}
-                whileHover={{ y: -5 }}
-                className={`flex flex-col h-full bg-white border border-gray-100 rounded-bubble p-4 shadow-sm transition-all relative overflow-hidden`}
+                whileHover={{ y: -8, rotate: facility.id === "fac-1" ? -1 : facility.id === "fac-2" ? 1 : -0.5 }}
+                className={`flex flex-col h-full bg-white border-2 border-dashed ${cardStyles.borderColor} ${cardStyles.hoverBorderColor} rounded-bubble p-5 shadow-sm transition-all relative overflow-hidden`}
                 id={`facility-card-${facility.id}`}
               >
+                {/* Cute Corner Sticker Tape */}
+                <div className={`absolute -top-1.5 -right-1 px-4 py-2 z-10 text-[9px] font-black uppercase tracking-wider shadow-sm ${cardStyles.stickerBg} -rotate-6 border-b border-l border-white/20 rounded-bl-xl`}>
+                  {cardStyles.stickerText}
+                </div>
+
                 {/* Image layout inside card */}
                 <div className="relative overflow-hidden rounded-2xl aspect-video mb-5 shadow-xs">
                   <img
@@ -88,10 +120,10 @@ export default function Fasilitas() {
                 {/* Info Text */}
                 <div className="flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-lg font-extrabold text-gray-900 mb-2 leading-tight">
+                    <h3 className="text-lg font-black text-gray-900 mb-2 leading-tight">
                       {facility.name}
                     </h3>
-                    <p className="text-xs md:text-sm text-gray-500 font-medium leading-relaxed mb-4">
+                    <p className="text-xs md:text-sm text-gray-500 font-semibold leading-relaxed mb-4">
                       {facility.description}
                     </p>
                   </div>
@@ -101,7 +133,7 @@ export default function Fasilitas() {
                     <button
                       id={`btn-toggle-facility-detail-${facility.id}`}
                       onClick={() => setSelectedFacility(isSelected ? null : facility.id)}
-                      className="inline-flex items-center space-x-1.5 text-xs font-bold text-brand-purple hover:underline cursor-pointer group/btn"
+                      className="inline-flex items-center space-x-1.5 text-xs font-extrabold text-brand-purple hover:underline cursor-pointer group/btn"
                     >
                       <span>{isSelected ? "Sembunyikan Standard Keamanan" : "Lihat Spesifikasi Layanan"}</span>
                       <ChevronRight className={`w-3.5 h-3.5 transition-transform ${isSelected ? "rotate-95" : "group-hover/btn:translate-x-0.5"}`} />
@@ -109,7 +141,7 @@ export default function Fasilitas() {
 
                     {/* Expandable Safety Details */}
                     {isSelected && (
-                      <div className="mt-4 p-3 bg-gray-50 rounded-xl space-y-2 border border-gray-200/50 animate-fade-in">
+                      <div className="mt-4 p-3 bg-gray-50 rounded-xl space-y-2 border border-dashed border-gray-300 animate-fade-in">
                         {getExtraInfo(facility.id).map((info, idx) => (
                           <div key={idx} className="flex items-start space-x-2">
                             <span className="text-brand-purple mt-0.5 text-xs text-rose-500 shrink-0">✨</span>

@@ -14,27 +14,43 @@ export default function Footer() {
     <footer id="footer-control" className="bg-gray-950 text-gray-300">
       
       {/* 1. Concluding Interactive Banner Section */}
-      <div className="relative py-14 sm:py-20 bg-brand-purple overflow-hidden text-center text-white">
+      <div className="relative pt-24 pb-14 sm:pt-28 sm:pb-20 bg-brand-purple overflow-hidden text-center text-white">
+        {/* Playful Wavy SVG Top Divider */}
+        <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-[0] z-20">
+          <svg
+            className="relative block w-full h-[32px] md:h-[48px] text-white fill-current"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0,0 C300,90 900,90 1200,0 L1200,120 L0,120 Z" />
+          </svg>
+        </div>
+
         {/* Background bubbles */}
         <div className="absolute top-1/2 left-10 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2" />
         <div className="absolute top-1/2 right-10 w-48 h-48 bg-white/10 rounded-full -translate-y-1/2" />
         
+        {/* Floating stickers */}
+        <div className="absolute top-16 left-[15%] text-4xl select-none animate-float pointer-events-none z-10">🎈</div>
+        <div className="absolute bottom-6 right-[15%] text-3xl select-none animate-float-slow pointer-events-none z-10">🌸</div>
+
         <div className="max-w-4xl mx-auto px-4 relative z-10 space-y-6">
-          <span className="text-xs font-extrabold uppercase tracking-widest bg-white/20 px-4 py-1.5 rounded-full inline-block">
+          <span className="text-[10px] font-black uppercase tracking-widest bg-white/20 px-4 py-1.5 rounded-full inline-block border border-white/20">
             Mulai Bersama Kami
           </span>
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-sans leading-tight">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-sans leading-tight">
             Berikan Fondasi Terbaik <br className="hidden sm:block" />
             Bagi Masa Depan Si Buah Hati
           </h3>
-          <p className="text-md sm:text-lg text-white/90 max-w-xl mx-auto font-medium">
+          <p className="text-sm sm:text-base text-white/90 max-w-xl mx-auto font-semibold leading-relaxed">
             Kursi pendaftaran terbatas di setiap gelombang kelas demi menjamin kenyamanan rasio mengajar anak.
           </p>
           <div className="pt-2">
             <button
               id="btn-footer-bottom-register"
               onClick={handleRegisterClick}
-              className="px-8 py-4 bg-joy-yellow text-amber-950 font-extrabold hover:bg-yellow-400 rounded-bubble font-bold shadow-xl hover:shadow-yellow-500/15 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer text-base"
+              className="px-8 py-4 bg-joy-yellow text-amber-950 font-black hover:bg-yellow-400 rounded-bubble shadow-xl hover:shadow-yellow-500/15 hover:scale-105 active:scale-95 transition-all transform cursor-pointer text-base animate-heartbeat-subtle inline-block"
             >
               Daftar Siswa Baru Sekarang (WhatsApp)
             </button>

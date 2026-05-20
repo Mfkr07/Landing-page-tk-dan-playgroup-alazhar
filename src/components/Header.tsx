@@ -58,7 +58,7 @@ export default function Header() {
               className="flex items-center space-x-3 cursor-pointer text-left group"
               id="header-logo"
             >
-              <div className="w-10 h-10 rounded-full bg-brand-purple flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+              <div className="w-11 h-11 rounded-full bg-brand-purple flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-12 active:scale-95 transition-all duration-300 overflow-hidden border-2 border-brand-purple/20">
                 <img
                   src="/logo.png"
                   alt="Logo Al Azzhar"
@@ -67,10 +67,10 @@ export default function Header() {
               </div>
 
               <div>
-                <span className="block text-lg font-bold text-brand-purple leading-tight font-sans">
+                <span className="block text-lg font-black text-brand-purple leading-tight font-sans tracking-wide group-hover:text-joy-pink transition-colors">
                   AL AZZHAR
                 </span>
-                <span className="block text-xs text-gray-400 font-medium tracking-wide">
+                <span className="block text-[10px] text-gray-400 font-bold tracking-widest group-hover:text-brand-purple transition-colors">
                   MUARA ENIM
                 </span>
               </div>
@@ -82,7 +82,7 @@ export default function Header() {
                 <button
                   key={item.targetId}
                   onClick={() => scrollToSection(item.targetId)}
-                  className="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brand-purple rounded-xl transition-all duration-200 cursor-pointer"
+                  className="px-3 py-2 text-sm font-bold text-gray-600 hover:text-brand-purple rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 transform cursor-pointer"
                 >
                   {item.label}
                 </button>
@@ -94,9 +94,9 @@ export default function Header() {
               <button
                 id="btn-desktop-chat-admin"
                 onClick={handleWhatsAppClick}
-                className="flex items-center space-x-2 bg-brand-whatsapp text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-md hover:bg-emerald-500 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+                className="flex items-center space-x-2 bg-brand-whatsapp text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-md hover:bg-emerald-500 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 transform cursor-pointer animate-heartbeat-subtle"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4 animate-bounce" />
                 <span>Hubungi Admin</span>
               </button>
             </div>

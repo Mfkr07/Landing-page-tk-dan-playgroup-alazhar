@@ -53,72 +53,77 @@ export default function Galeri() {
         {/* Filter Categories Chips */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-10" id="gallery-filter-chips">
           {categories.map((category) => (
-            <button
+            <motion.button
               key={category}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               id={`filter-chip-${category.toLowerCase().replace(/\s+/g, "")}`}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4.5 py-2.5 rounded-full text-xs font-extrabold transition-all cursor-pointer ${
+              className={`px-4.5 py-2.5 rounded-full text-xs font-black transition-all cursor-pointer shadow-xs ${
                 category === selectedCategory
                   ? "bg-brand-purple text-white shadow-md shadow-brand-purple/15"
                   : "bg-gray-100 hover:bg-gray-200 text-gray-600"
               }`}
             >
               {category}
-            </button>
+            </motion.button>
           ))}
         </div>
 
         {/* Photos Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="gallery-photo-grid">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="gallery-photo-grid">
           <AnimatePresence mode="popLayout">
-            {filteredPhotos.map((photo) => {
+            {filteredPhotos.map((photo, index) => {
               const isLiked = !!likedPhotos[photo.id];
+              const rotationDeg = index % 2 === 0 ? -1.5 : 1.5;
+
               return (
                 <motion.div
                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  animate={{ opacity: 1, scale: 1, rotate: rotationDeg }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
+                  whileHover={{ scale: 1.04, rotate: rotationDeg * -0.5, zIndex: 10 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   key={photo.id}
                   id={`gallery-item-${photo.id}`}
                   onClick={() => setSelectedPhoto(photo)}
-                  className="group relative h-72 md:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-xs border border-gray-100 hover:shadow-md transition-shadow"
+                  className="bg-white p-3.5 pb-6 rounded-bubble shadow-sm border border-gray-150 cursor-pointer hover:shadow-xl transition-shadow relative flex flex-col justify-between h-[310px]"
                 >
-                  <img
-                    src={photo.imageUrl}
-                    alt={photo.title}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  
-                  {/* Category Pill Overlays on top right */}
-                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs py-1 px-3 rounded-full text-[10px] font-bold text-brand-purple border border-brand-purple/10">
-                    {photo.category}
+                  <div className="relative overflow-hidden rounded-2xl aspect-square w-full shadow-xs mb-3 bg-gray-50">
+                    <img
+                      src={photo.imageUrl}
+                      alt={photo.title}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      loading="lazy"
+                    />
+                    
+                    {/* Category Pill Overlays on top right */}
+                    <div className="absolute top-2 left-2 bg-white/95 backdrop-blur-xs py-0.5 px-2 rounded-full text-[9px] font-bold text-brand-purple border border-brand-purple/10">
+                      {photo.category}
+                    </div>
+
+                    {/* Like Button Overlay on top left */}
+                    <button
+                      onClick={(e) => toggleLike(photo.id, e)}
+                      className="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/95 backdrop-blur-xs flex items-center justify-center text-gray-400 hover:text-rose-500 hover:scale-110 active:scale-90 transition-all cursor-pointer shadow-sm"
+                      aria-label="Like photo"
+                      id={`btn-like-photo-${photo.id}`}
+                    >
+                      <Heart className={`w-3.5 h-3.5 ${isLiked ? "fill-rose-500 text-rose-500 animate-ping" : ""}`} />
+                      {isLiked && <Heart className="absolute w-3.5 h-3.5 fill-rose-500 text-rose-500" />}
+                    </button>
                   </div>
 
-                  {/* Like Button Overlay on top left */}
-                  <button
-                    onClick={(e) => toggleLike(photo.id, e)}
-                    className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-xs flex items-center justify-center text-gray-400 hover:text-rose-500 transition-colors cursor-pointer"
-                    aria-label="Like photo"
-                    id={`btn-like-photo-${photo.id}`}
-                  >
-                    <Heart className={`w-4 h-4 ${isLiked ? "fill-rose-500 text-rose-500" : ""}`} />
-                  </button>
-
-                  {/* Sliding details block on bottom */}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 flex flex-col justify-end translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="text-white font-extrabold text-sm leading-tight mb-1">
+                  {/* Polaroid handwritten-like bottom label */}
+                  <div className="text-center px-1">
+                    <span className="text-xs font-black text-gray-800 tracking-wide line-clamp-1 group-hover:text-brand-purple">
                       {photo.title}
                     </span>
-                    <p className="text-[11px] text-gray-200 font-medium line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {photo.description}
-                    </p>
-                    <div className="mt-2.5 flex items-center text-[10px] text-joy-yellow font-extrabold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <ZoomIn className="w-3.5 h-3.5 mr-1" />
-                      <span>Perbesar Dokumentasi</span>
+                    <div className="mt-1.5 flex items-center justify-center text-[10px] text-brand-purple font-extrabold">
+                      <ZoomIn className="w-3 h-3 mr-1" />
+                      <span>Lihat Detail</span>
                     </div>
                   </div>
                 </motion.div>

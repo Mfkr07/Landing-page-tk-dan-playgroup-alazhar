@@ -114,21 +114,23 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
                 {activeProgram.items.map((item) => {
                   const isChecked = !!selectedFeeIds[item.id];
                   return (
-                    <div
+                    <motion.div
                       key={item.id}
+                      whileHover={{ scale: 1.01, x: 4 }}
+                      whileTap={{ scale: 0.99 }}
                       id={`biaya-item-container-${item.id}`}
                       onClick={() => toggleFeeSelection(item.id)}
-                      className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start space-x-4 ${
+                      className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex items-start space-x-4 ${
                         isChecked
-                          ? "bg-white border-brand-purple shadow-xs"
-                          : "bg-gray-50 border-gray-100 opacity-75"
+                          ? "bg-brand-purple/5 border-brand-purple shadow-sm"
+                          : "bg-white border-dashed border-gray-250 opacity-75 hover:opacity-100"
                       }`}
                     >
                       {/* Checkbox circle indicator */}
                       <div
-                        className={`w-5.5 h-5.5 rounded-full border flex items-center justify-center mt-0.5 shrink-0 transition-colors ${
+                        className={`w-5.5 h-5.5 rounded-full border-2 flex items-center justify-center mt-0.5 shrink-0 transition-colors ${
                           isChecked
-                            ? "bg-brand-purple border-brand-purple text-white"
+                            ? "bg-brand-purple border-brand-purple text-white animate-wiggle"
                             : "bg-white border-gray-300"
                         }`}
                       >
@@ -138,20 +140,20 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
                       {/* Component title & description */}
                       <div className="flex-1">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-1">
-                          <span className="font-extrabold text-gray-900 text-sm sm:text-base leading-tight">
+                          <span className="font-black text-gray-900 text-sm sm:text-base leading-tight">
                             {item.component}
                           </span>
-                          <span className="font-extrabold text-brand-purple text-sm sm:text-base shrink-0">
+                          <span className="font-black text-brand-purple text-sm sm:text-base shrink-0">
                             {formatRupiah(item.nominal)}
                           </span>
                         </div>
-                        <p className="text-xs text-gray-400 font-medium leading-relaxed mb-2 pr-4">
+                        <p className="text-xs text-gray-400 font-semibold leading-relaxed mb-2 pr-4">
                           {item.description}
                         </p>
 
                         {/* One-time vs Monthly badge */}
                         <span
-                          className={`inline-block text-[10px] font-extrabold px-2.5 py-0.5 rounded-md ${
+                          className={`inline-block text-[9px] font-black px-2.5 py-0.5 rounded-md ${
                             item.isOneTime
                               ? "bg-violet-100 text-brand-purple"
                               : "bg-emerald-100 text-emerald-700"
@@ -160,7 +162,7 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
                           {item.isOneTime ? "Sekali di Awal" : "Iuran Bulanan / Rutin"}
                         </span>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -168,7 +170,7 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
               {/* Calculator Helpful Notice banner */}
               <div className="pt-4 flex items-start space-x-2.5 text-gray-400">
                 <Info className="w-4.5 h-4.5 text-brand-purple shrink-0 mt-0.5" />
-                <p className="text-[11px] font-medium leading-relaxed">
+                <p className="text-[11px] font-semibold leading-relaxed">
                   Gunakan tombol centang di atas untuk mematikan atau menghidupkan item biaya guna mensimulasikan kisaran total keuangan awal yang perlu Anda persiapkan.
                 </p>
               </div>
@@ -178,22 +180,34 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
           </div>
 
           {/* RIGHT SIDE: FINALIZED BILLING ESTIMATION REPORT CARD */}
-          <div className="lg:col-span-5">
-            <div className="bg-white border border-brand-purple/20 p-6 sm:p-8 rounded-3xl shadow-lg sticky top-24">
-              <div className="flex items-center space-x-2 text-brand-purple mb-4">
+          <div className="lg:col-span-5 relative pt-4">
+            <div className="bg-white border-2 border-dashed border-brand-purple/35 p-6 sm:p-8 rounded-3xl shadow-xl sticky top-24 relative overflow-hidden">
+              {/* Notebook binding dots overlay */}
+              <div className="absolute top-0 inset-x-0 h-3 flex justify-around px-8 pointer-events-none">
+                {[...Array(8)].map((_, i) => (
+                  <div key={i} className="w-2.5 h-2.5 -mt-1 rounded-full bg-gray-250 border border-gray-300 shadow-inner" />
+                ))}
+              </div>
+
+              {/* Cute savings tab badge */}
+              <div className="absolute -top-3.5 right-6 bg-joy-pink text-white px-4.5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider shadow-md -rotate-2 animate-bounce">
+                Simulasi Cerdas 🐷
+              </div>
+
+              <div className="flex items-center space-x-2 text-brand-purple mb-4 pt-2">
                 <FileText className="w-5 h-5" />
-                <span className="text-xs font-extrabold uppercase tracking-widest">Kalkulator Biaya</span>
+                <span className="text-xs font-black uppercase tracking-widest">Kalkulator Biaya</span>
               </div>
               
-              <h4 className="text-xl font-extrabold text-gray-950 mb-4 leading-tight">
+              <h4 className="text-lg font-black text-gray-950 mb-4 leading-tight">
                 Simulasi Keuangan Masuk Sekolah
               </h4>
 
               {/* Breakdown line items mini widget */}
-              <div className="space-y-3 pb-6 mb-6 border-b border-gray-100">
+              <div className="space-y-3 pb-6 mb-6 border-b border-dashed border-gray-200">
                 {currentSelectedItems.map((item) => (
                   <div key={item.id} className="flex items-center justify-between text-xs">
-                    <span className="text-gray-500 font-medium truncate max-w-[200px]">{item.component}</span>
+                    <span className="text-gray-500 font-semibold truncate max-w-[200px]">{item.component}</span>
                     <span className="text-gray-900 font-bold">{formatRupiah(item.nominal)}</span>
                   </div>
                 ))}
@@ -205,12 +219,12 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
               </div>
 
               {/* Large Grand Total Box */}
-              <div className="bg-gray-50 p-4 rounded-2xl mb-6">
+              <div className="bg-joy-yellow/10 border-2 border-dashed border-joy-yellow p-4.5 rounded-2xl mb-6 animate-heartbeat-subtle">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-gray-500">ESTIMASI TOTAL AWAL</span>
-                  <span className="text-xs font-extrabold bg-joy-yellow/30 text-amber-900 px-2 py-0.5 rounded-md">TERHITUNG</span>
+                  <span className="text-xs font-bold text-amber-950">ESTIMASI TOTAL AWAL</span>
+                  <span className="text-[9px] font-black bg-joy-yellow text-amber-950 px-2 py-0.5 rounded-md shadow-xs">TERHITUNG</span>
                 </div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-brand-purple tracking-tight mt-1">
+                <div className="text-2xl sm:text-3xl font-black text-brand-purple tracking-tight mt-1">
                   {formatRupiah(calculatedTotal)}
                 </div>
               </div>
@@ -220,7 +234,7 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
                 id="btn-share-biaya-wa"
                 onClick={handleShareCostToWhatsapp}
                 disabled={currentSelectedItems.length === 0}
-                className={`w-full flex items-center justify-center space-x-2 text-white py-4 rounded-2xl font-bold text-sm shadow-md transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-center space-x-2 text-white py-4 rounded-2xl font-black text-sm shadow-md transition-all cursor-pointer hover:scale-103 active:scale-97 transform ${
                   currentSelectedItems.length > 0
                     ? "bg-brand-whatsapp hover:bg-emerald-500 hover:shadow-lg"
                     : "bg-gray-300 pointer-events-none"

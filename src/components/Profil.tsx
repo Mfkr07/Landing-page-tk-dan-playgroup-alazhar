@@ -97,29 +97,40 @@ export default function Profil() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* LEFT INTERACTIVE AREA: CONTENT SPECIFIC */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 relative">
+            {/* Playful star sticker */}
+            <div className="absolute -top-6 -left-6 text-2xl select-none animate-bounce z-15 pointer-events-none">⭐</div>
+            <div className="absolute -bottom-6 right-6 text-2xl select-none animate-pulse z-15 pointer-events-none">✨</div>
+
             <AnimatePresence mode="wait">
               {activeTab === "sejarah" ? (
                 <motion.div
                   key="sejarah-content"
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
+                  initial={{ opacity: 0, scale: 0.98, x: -10 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.98, x: 10 }}
                   transition={{ duration: 0.3 }}
-                  className="space-y-6"
+                  className="space-y-6 bg-white border-2 border-dashed border-brand-purple/30 rounded-bubble p-6 sm:p-8 md:p-10 shadow-md relative -rotate-0.5"
                   id="profile-sejarah-card"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900 leading-tight">
+                  {/* Binder Spirals */}
+                  <div className="absolute -top-4.5 left-10 right-10 flex justify-between px-6 z-10 pointer-events-none">
+                    {[...Array(6)].map((_, i) => (
+                      <div key={i} className="w-3.5 h-8 bg-gray-300 rounded-full border-2 border-gray-400 shadow-sm" />
+                    ))}
+                  </div>
+
+                  <h3 className="text-2xl font-black text-gray-900 leading-tight pt-2">
                     Membangun Fondasi Masa Depan yang Cemerlang
                   </h3>
-                  <p className="text-gray-650 leading-relaxed font-medium">
+                  <p className="text-gray-650 leading-relaxed font-semibold">
                     {BRAND_DATA.history}
                   </p>
                   
                   <div className="p-6 bg-brand-purple/5 border border-brand-purple/10 rounded-2xl relative overflow-hidden">
                     <div className="absolute right-0 top-0 w-24 h-24 bg-brand-purple/5 rounded-full -mr-8 -mt-8" />
-                    <h4 className="text-base font-bold text-brand-purple mb-2">Nilai Inti Bimbingan Kami:</h4>
-                    <p className="text-sm text-gray-600 leading-relaxed font-medium">
+                    <h4 className="text-base font-extrabold text-brand-purple mb-2">Nilai Inti Bimbingan Kami:</h4>
+                    <p className="text-xs text-gray-600 leading-relaxed font-semibold">
                       Kami berpegang teguh bahwa dunia anak adalah dunia bermain. Setiap sentuhan edukasi diarahkan tanpa tekanan fisik maupun verbal, menciptakan jaminan rasa aman yang mendalam di hati guru, siswa, dan orang tua murid.
                     </p>
                   </div>
@@ -130,61 +141,68 @@ export default function Profil() {
                       <div className="w-6 h-6 rounded-full bg-joy-green/20 flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-4 h-4 text-emerald-600 stroke-[3]" />
                       </div>
-                      <span className="text-sm font-bold text-gray-700">Lingkungan sejuk 100% full AC</span>
+                      <span className="text-xs font-bold text-gray-700">Lingkungan sejuk 100% full AC</span>
                     </div>
                     <div className="flex items-start space-x-3">
                       <div className="w-6 h-6 rounded-full bg-joy-yellow/20 flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-4 h-4 text-amber-600 stroke-[3]" />
                       </div>
-                      <span className="text-sm font-bold text-gray-700">Rasio belajar kondusif (8 siswa/guru)</span>
+                      <span className="text-xs font-bold text-gray-700">Rasio belajar kondusif (8 siswa/guru)</span>
                     </div>
                     <div className="flex items-start space-x-3">
                       <div className="w-6 h-6 rounded-full bg-joy-pink/20 flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-4 h-4 text-rose-600 stroke-[3]" />
                       </div>
-                      <span className="text-sm font-bold text-gray-700">Pendidikan pembiasaan akhlak harian</span>
+                      <span className="text-xs font-bold text-gray-700">Pendidikan pembiasaan akhlak harian</span>
                     </div>
                     <div className="flex items-start space-x-3">
                       <div className="w-6 h-6 rounded-full bg-brand-purple/20 flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-4 h-4 text-brand-purple stroke-[3]" />
                       </div>
-                      <span className="text-sm font-bold text-gray-700">Gedung representatif mudah diakses</span>
+                      <span className="text-xs font-bold text-gray-700">Gedung representatif mudah diakses</span>
                     </div>
                   </div>
                 </motion.div>
               ) : (
                 <motion.div
                   key="visimisi-content"
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
+                  initial={{ opacity: 0, scale: 0.98, x: -10 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.98, x: 10 }}
                   transition={{ duration: 0.3 }}
-                  className="space-y-8"
+                  className="space-y-8 bg-white border-2 border-dashed border-brand-purple/30 rounded-bubble p-6 sm:p-8 md:p-10 shadow-md relative rotate-0.5"
                   id="profile-visimisi-card"
                 >
+                  {/* Binder Spirals */}
+                  <div className="absolute -top-4.5 left-10 right-10 flex justify-between px-6 z-10 pointer-events-none">
+                    {[...Array(6)].map((_, i) => (
+                      <div key={i} className="w-3.5 h-8 bg-gray-300 rounded-full border-2 border-gray-400 shadow-sm" />
+                    ))}
+                  </div>
+
                   {/* Visi */}
-                  <div className="p-6 bg-joy-pink/10 border border-joy-pink/30 rounded-3xl relative">
-                    <div className="absolute -top-4 left-6 bg-joy-pink text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
+                  <div className="p-6 bg-joy-pink/10 border-2 border-dashed border-joy-pink/40 rounded-3xl relative pt-8">
+                    <div className="absolute -top-4 left-6 bg-joy-pink text-white px-4 py-1.5 rounded-full text-xs font-extrabold tracking-wider uppercase shadow-md -rotate-2">
                       Visi Utama
                     </div>
-                    <p className="text-lg md:text-xl font-extrabold text-gray-900 leading-relaxed pt-2">
+                    <p className="text-base sm:text-lg font-black text-gray-900 leading-relaxed">
                       &quot;{BRAND_DATA.vision}&quot;
                     </p>
                   </div>
 
                   {/* Misi */}
                   <div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center space-x-2">
+                    <h4 className="text-base font-extrabold text-gray-900 mb-4 flex items-center space-x-2">
                       <Target className="w-5 h-5 text-brand-purple" />
                       <span>Misi Yayasan Al Azzhar:</span>
                     </h4>
                     <ul className="space-y-3.5">
                       {BRAND_DATA.missions.map((mission, index) => (
-                        <li key={index} className="flex items-start space-x-3 bg-gray-50 p-3.5 rounded-2xl border border-gray-100 hover:border-brand-purple/10 transition-colors">
-                          <div className="w-6 h-6 rounded-full bg-brand-purple text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                        <li key={index} className="flex items-start space-x-3 bg-gray-50 p-3.5 rounded-2xl border border-gray-100 hover:border-brand-purple/10 transition-all hover:scale-[1.01]">
+                          <div className="w-6 h-6 rounded-full bg-brand-purple text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                             {index + 1}
                           </div>
-                          <span className="text-sm md:text-md text-gray-750 font-semibold leading-relaxed">
+                          <span className="text-xs sm:text-sm text-gray-750 font-bold leading-relaxed">
                             {mission}
                           </span>
                         </li>
@@ -231,17 +249,24 @@ export default function Profil() {
                   return (
                     <div
                       key={index}
-                      className="bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all shadow-xs"
+                      className={`bg-white border rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:-rotate-0.5 active:scale-[0.99] ${
+                        isExpanded
+                          ? "border-brand-purple/40 shadow-md ring-4 ring-brand-purple/5"
+                          : "border-gray-100 shadow-sm"
+                      }`}
                     >
                       <button
                         onClick={() => toggleFaq(index)}
-                        className="w-full flex items-center justify-between p-4 font-bold text-gray-800 text-xs md:text-sm text-left hover:text-brand-purple transition-colors cursor-pointer"
+                        className="w-full flex items-center justify-between p-4.5 font-bold text-gray-800 text-xs md:text-sm text-left hover:text-brand-purple transition-colors cursor-pointer"
                         id={`faq-btn-${index}`}
                       >
-                        <span className="pr-4">{faq.q}</span>
+                        <span className="pr-4 flex items-center space-x-2">
+                          <span className="text-joy-pink font-extrabold text-sm">❓</span>
+                          <span>{faq.q}</span>
+                        </span>
                         <ChevronDown
                           className={`w-4 h-4 text-gray-400 shrink-0 transition-transform duration-300 ${
-                            isExpanded ? "transform rotate-180" : ""
+                            isExpanded ? "transform rotate-180 text-brand-purple" : ""
                           }`}
                         />
                       </button>
@@ -253,7 +278,7 @@ export default function Profil() {
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.25 }}
                           >
-                            <div className="p-4 pt-0 text-xs md:text-sm text-gray-500 font-medium leading-relaxed border-t border-gray-50 bg-gray-50/30">
+                            <div className="p-4.5 pt-0 text-xs md:text-sm text-gray-500 font-semibold leading-relaxed border-t border-dashed border-gray-100 bg-gray-50/50">
                               {faq.a}
                             </div>
                           </motion.div>

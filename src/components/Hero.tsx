@@ -28,12 +28,76 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen pt-28 pb-16 md:pt-36 md:pb-24 lg:pt-40 lg:pb-32 bg-gradient-to-b from-brand-purple/5 via-white to-white overflow-hidden"
+      className="relative min-h-screen pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-40 lg:pb-36 bg-gradient-to-b from-brand-purple/10 via-white to-white overflow-hidden"
     >
       {/* Ambient background kids elements - hand crafted pastel blobs */}
-      <div className="absolute top-20 left-10 w-48 h-48 bg-joy-yellow/20 rounded-full filter blur-2xl -z-10 animate-pulse duration-[8s]" />
+      <div className="absolute top-20 left-10 w-48 h-48 bg-joy-yellow/25 rounded-full filter blur-2xl -z-10 animate-pulse duration-[8s]" />
       <div className="absolute right-10 top-40 w-72 h-72 bg-joy-pink/20 rounded-full filter blur-3xl -z-10 animate-bounce duration-[12s]" />
       <div className="absolute left-[30%] bottom-10 w-64 h-64 bg-joy-green/20 rounded-full filter blur-2xl -z-10" />
+
+      {/* Floating Animated Bee Mascot */}
+      <motion.div
+        animate={{
+          x: [0, 35, 15, -25, 0],
+          y: [0, -25, 15, -10, 0],
+          rotate: [0, 8, -12, 8, 0]
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-24 left-[12%] text-4xl select-none z-10 pointer-events-none cursor-pointer group"
+      >
+        <span className="inline-block hover:scale-125 transition-transform duration-300 pointer-events-auto">🐝</span>
+      </motion.div>
+
+      {/* Smiling Sun Mascot */}
+      <motion.div
+        animate={{
+          rotate: 360
+        }}
+        transition={{
+          duration: 60,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+        className="absolute top-16 right-[12%] text-5xl select-none -z-10 pointer-events-none opacity-95"
+      >
+        ☀️
+      </motion.div>
+
+      {/* Floating Butterfly Mascot */}
+      <motion.div
+        animate={{
+          y: [0, -10, 0],
+          rotate: [-3, 8, -3]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute bottom-32 left-[6%] text-3xl select-none z-10 pointer-events-auto cursor-pointer hover:scale-125 transition-transform"
+      >
+        🦋
+      </motion.div>
+
+      {/* Soft Clouds */}
+      <motion.div
+        animate={{ x: [-8, 8, -8] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-32 right-[32%] text-4xl opacity-35 pointer-events-none -z-10"
+      >
+        ☁️
+      </motion.div>
+      <motion.div
+        animate={{ x: [8, -8, 8] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-64 left-[4%] text-3xl opacity-30 pointer-events-none -z-10"
+      >
+        ☁️
+      </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -195,12 +259,24 @@ export default function Hero() {
 
               {/* Tiny decorative sticker */}
               <div className="absolute left-6 -bottom-4 bg-white px-4 py-2 rounded-full shadow-md border border-gray-100 flex items-center space-x-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
                 <span className="text-xs font-bold text-gray-600">Terakreditasi BAN-PAUD</span>
               </div>
             </motion.div>
           </div>
         </div>
+      </div>
+
+      {/* Playful Wavy SVG Bottom Divider */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-[0] z-10">
+        <svg
+          className="relative block w-full h-[32px] md:h-[48px] text-white fill-current"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0,0 C300,90 900,90 1200,0 L1200,120 L0,120 Z" />
+        </svg>
       </div>
     </section>
   );

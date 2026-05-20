@@ -77,11 +77,17 @@ export default function Testimoni() {
         </div>
 
         {/* Carousel Content */}
-        <div className="relative">
-          <div className="bg-gray-50/70 border border-gray-100 rounded-3xl p-6 sm:p-10 md:p-14 relative" id="testimoni-card-frame">
-            
+        <div className="relative max-w-3xl mx-auto">
+          {/* Floating decorative stickers */}
+          <div className="absolute -top-12 -right-6 text-4xl select-none animate-float pointer-events-none z-10">🎈</div>
+          <div className="absolute -bottom-8 -left-6 text-3xl select-none animate-float-slow pointer-events-none z-10">🌸</div>
+
+          <div className="bg-white border-2 border-dashed border-brand-purple/30 rounded-[2.5rem] p-6 sm:p-10 md:p-12 shadow-lg relative" id="testimoni-card-frame">
+            {/* Soft background blob inside */}
+            <div className="absolute bottom-0 right-0 w-24 h-24 bg-joy-pink/5 rounded-full -mr-8 -mb-8 pointer-events-none" />
+
             {/* Huge Quote Graphic Mark */}
-            <div className="absolute top-6 left-6 text-brand-purple/15">
+            <div className="absolute top-6 left-6 text-brand-purple/10">
               <Quote className="w-14 h-14 rotate-180" />
             </div>
 
@@ -98,29 +104,29 @@ export default function Testimoni() {
                   className="space-y-6"
                 >
                   {/* Star rating */}
-                  <div className="flex space-x-1">{renderStars(activeTesti.rating)}</div>
+                  <div className="flex space-x-1 hover:scale-105 transition-transform duration-300 cursor-pointer">{renderStars(activeTesti.rating)}</div>
 
                   {/* Comment quote */}
-                  <p className="text-sm sm:text-base md:text-lg text-gray-700 font-semibold italic leading-relaxed text-left">
+                  <p className="text-sm sm:text-base md:text-lg text-gray-700 font-extrabold italic leading-relaxed text-left">
                     &quot;{activeTesti.quote}&quot;
                   </p>
 
                   {/* Presenter info */}
-                  <div className="flex items-center space-x-4 pt-4 border-t border-gray-200/50">
+                  <div className="flex items-center space-x-4 pt-4 border-t border-dashed border-gray-150">
                     <img
                       src={activeTesti.avatarUrl}
                       alt={activeTesti.parentName}
                       referrerPolicy="no-referrer"
-                      className="w-12 h-12 rounded-full object-cover border-2 border-brand-purple/20"
+                      className="w-12 h-12 rounded-full object-cover border-2 border-brand-purple/30 shadow-sm"
                     />
                     <div className="text-left">
-                      <h4 className="font-extrabold text-gray-900 text-sm sm:text-md">
+                      <h4 className="font-black text-gray-900 text-sm sm:text-md">
                         {activeTesti.parentName}
                       </h4>
-                      <p className="text-xs text-brand-purple font-bold">
+                      <p className="text-xs text-brand-purple font-black">
                         Wali dari {activeTesti.childName}
                       </p>
-                      <p className="text-[10px] text-gray-400 font-medium">
+                      <p className="text-[10px] text-gray-400 font-bold">
                         {activeTesti.role}
                       </p>
                     </div>
