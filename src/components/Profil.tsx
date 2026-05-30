@@ -31,7 +31,7 @@ export default function Profil() {
   const faqs = [
     {
       q: "Berapakah batas minimal usia anak untuk mendaftar?",
-      a: "Bagi jenjang Playgroup (Kelompok Bermain), minimal usia anak adalah berkisar 3 tahun di awal tahun pelajaran. Sedangkan untuk jenjang TK A minimal 4 tahun, dan TK B minimal 5 tahun."
+      a: "Sesuai dengan brosur resmi kami, usia belajar anak untuk jenjang Playgroup adalah berkisar 2.5 tahun. Sedangkan untuk Kelompok A berusia 4 tahun, dan Kelompok B berusia 5 tahun."
     },
     {
       q: "Bagaimanakah kurikulum utama yang diajarkan?",
@@ -292,6 +292,112 @@ export default function Profil() {
 
           </div>
 
+        </div>
+
+        {/* Divider line */}
+        <div className="w-full h-px bg-gray-250/60 my-16" />
+
+        {/* Usia Belajar & Jam Pembelajaran Section */}
+        <div className="mb-20">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-xs font-extrabold text-joy-pink uppercase tracking-widest bg-joy-pink/10 px-4 py-1.5 rounded-full inline-block mb-3">
+              Usia Emas & Jadwal Ceria
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-950 font-sans tracking-tight">
+              Usia Belajar & <span className="text-brand-purple">Kegiatan Pembelajaran</span>
+            </h3>
+            <div className="w-12 h-1 bg-brand-purple mx-auto rounded-full mt-3" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* Playgroup */}
+            <div className="bg-white border-2 border-dashed border-brand-purple/20 hover:border-brand-purple/40 p-6 rounded-bubble shadow-xs text-center transition-all hover:scale-102">
+              <div className="w-12 h-12 bg-brand-purple/10 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-purple text-xl">
+                🍼
+              </div>
+              <h4 className="font-extrabold text-gray-900 text-lg">Playgroup (KB)</h4>
+              <p className="text-xs text-gray-400 font-bold mt-1">Usia Belajar: <span className="text-brand-purple font-black">2.5 TAHUN</span></p>
+              <div className="w-full h-px bg-gray-100 my-4" />
+              <p className="text-xs text-gray-500 font-extrabold">Jam Pembelajaran:</p>
+              <p className="text-sm font-black text-gray-800 mt-1">07.15 - 10.00 WIB</p>
+            </div>
+
+            {/* Kelompok A */}
+            <div className="bg-white border-2 border-dashed border-joy-pink/20 hover:border-joy-pink/40 p-6 rounded-bubble shadow-xs text-center transition-all hover:scale-102">
+              <div className="w-12 h-12 bg-joy-pink/10 rounded-full flex items-center justify-center mx-auto mb-4 text-joy-pink text-xl">
+                🎨
+              </div>
+              <h4 className="font-extrabold text-gray-900 text-lg">Kelompok A (TK A)</h4>
+              <p className="text-xs text-gray-400 font-bold mt-1">Usia Belajar: <span className="text-joy-pink font-black">4 TAHUN</span></p>
+              <div className="w-full h-px bg-gray-100 my-4" />
+              <p className="text-xs text-gray-500 font-extrabold">Jam Pembelajaran:</p>
+              <p className="text-sm font-black text-gray-800 mt-1">07.15 - 10.30 WIB</p>
+            </div>
+
+            {/* Kelompok B */}
+            <div className="bg-white border-2 border-dashed border-joy-yellow/30 hover:border-joy-yellow p-6 rounded-bubble shadow-xs text-center transition-all hover:scale-102">
+              <div className="w-12 h-12 bg-joy-yellow/10 rounded-full flex items-center justify-center mx-auto mb-4 text-amber-600 text-xl">
+                🚀
+              </div>
+              <h4 className="font-extrabold text-gray-900 text-lg">Kelompok B (TK B)</h4>
+              <p className="text-xs text-gray-400 font-bold mt-1">Usia Belajar: <span className="text-amber-600 font-black">5 TAHUN</span></p>
+              <div className="w-full h-px bg-gray-100 my-4" />
+              <p className="text-xs text-gray-500 font-extrabold">Jam Pembelajaran:</p>
+              <p className="text-sm font-black text-gray-800 mt-1">07.15 - 11.30 WIB</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Program Unggulan & Program Sekolah Grid */}
+        <div>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-xs font-extrabold text-brand-purple uppercase tracking-widest bg-brand-purple/10 px-4 py-1.5 rounded-full inline-block mb-3">
+              Kurikulum Karakter Terbaik
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-950 font-sans tracking-tight">
+              Program Unggulan & <span className="text-brand-purple">Program Sekolah</span>
+            </h3>
+            <p className="text-gray-550 mt-3 text-xs md:text-sm text-gray-500 font-semibold max-w-lg mx-auto">
+              Beragam program harian dan tahunan dirancang interaktif guna menstimulasi kemandirian, kecerdasan, dan kecintaan si kecil pada akhlak mulia.
+            </p>
+            <div className="w-12 h-1 bg-brand-purple mx-auto rounded-full mt-3" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Program Unggulan Card */}
+            <div className="bg-white border-2 border-brand-purple/30 rounded-[2rem] p-6 sm:p-8 shadow-sm relative overflow-hidden">
+              <div className="absolute right-0 top-0 w-24 h-24 bg-brand-purple/5 rounded-full -mr-8 -mt-8" />
+              <h4 className="text-base sm:text-lg font-black text-brand-purple mb-6 flex items-center space-x-2">
+                <span>🌟</span>
+                <span>Program Unggulan Yayasan</span>
+              </h4>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {BRAND_DATA.programsUnggulan?.map((prog, idx) => (
+                  <li key={idx} className="flex items-start space-x-2 bg-brand-purple/5 border border-brand-purple/10 p-2.5 rounded-xl hover:bg-brand-purple/10 transition-colors">
+                    <span className="text-brand-purple font-bold text-xs mt-0.5">✔</span>
+                    <span className="text-[10px] font-bold text-gray-700 leading-tight">{prog}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Program Sekolah Card */}
+            <div className="bg-white border-2 border-joy-pink/30 rounded-[2rem] p-6 sm:p-8 shadow-sm relative overflow-hidden">
+              <div className="absolute right-0 top-0 w-24 h-24 bg-joy-pink/5 rounded-full -mr-8 -mt-8" />
+              <h4 className="text-base sm:text-lg font-black text-joy-pink mb-6 flex items-center space-x-2">
+                <span>🎒</span>
+                <span>Program Pembelajaran Sekolah</span>
+              </h4>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {BRAND_DATA.programsSekolah?.map((prog, idx) => (
+                  <li key={idx} className="flex items-start space-x-2 bg-joy-pink/5 border border-joy-pink/10 p-2.5 rounded-xl hover:bg-joy-pink/10 transition-colors">
+                    <span className="text-joy-pink font-bold text-xs mt-0.5">✔</span>
+                    <span className="text-[10px] font-bold text-gray-700 leading-tight">{prog}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
 
       </div>

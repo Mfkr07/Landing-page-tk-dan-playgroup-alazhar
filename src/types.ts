@@ -26,6 +26,8 @@ export interface FeeItem {
 export interface ProgramFee {
   programName: string;
   subTitle: string;
+  ageLimit?: string;
+  hours?: string;
   items: FeeItem[];
 }
 

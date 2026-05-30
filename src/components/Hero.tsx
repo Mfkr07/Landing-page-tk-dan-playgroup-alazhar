@@ -111,9 +111,8 @@ export default function Hero() {
               className="inline-flex items-center self-center lg:self-start space-x-2 bg-brand-purple/10 border border-brand-purple/20 px-3.5 py-1.5 rounded-full mb-6"
               id="hero-banner-accent"
             >
-              <span className="w-2 h-2 rounded-full bg-brand-purple animate-ping" />
               <span className="text-xs font-bold text-brand-purple uppercase tracking-wider">
-                Pendaftaran Tahun Ajaran Baru Dibuka!
+                PPDB TA {BRAND_DATA.academicYear} • Dibuka {BRAND_DATA.registrationStart}
               </span>
             </motion.div>
 
@@ -164,7 +163,7 @@ export default function Hero() {
                 onClick={handleRegisterClick}
                 className="w-full sm:w-auto px-8 py-4 bg-brand-purple text-white hover:bg-brand-purple/90 font-bold rounded-bubble shadow-lg hover:shadow-brand-purple/20 hover:scale-[1.02] transition-all cursor-pointer flex items-center justify-center space-x-2 text-base text-center"
               >
-                <span>Daftar Sekarang Secara Instan</span>
+                <span>Daftar PPDB Online</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
 
@@ -191,23 +190,23 @@ export default function Hero() {
                   <CheckCircle className="w-4 h-4" />
                   <span className="text-sm font-bold">AKREDITASI</span>
                 </div>
-                <span className="text-xl font-extrabold text-gray-800">Grade A</span>
+                <span className="text-sm font-extrabold text-gray-800 leading-tight">Grade A (2000-Skrg)</span>
               </div>
 
               <div className="flex flex-col items-center lg:items-start p-3 bg-white hover:shadow-sm border border-gray-100 rounded-2xl transition-all">
                 <div className="flex items-center space-x-1.5 mb-1 text-joy-green">
                   <Star className="w-4 h-4 fill-joy-green" />
-                  <span className="text-sm font-bold">RASIO GURU</span>
+                  <span className="text-sm font-bold">METODE</span>
                 </div>
-                <span className="text-xl font-extrabold text-gray-800">1 : 8 Anak</span>
+                <span className="text-sm font-extrabold text-gray-800 leading-tight">Karakter & Outbond</span>
               </div>
 
               <div className="flex flex-col items-center lg:items-start p-3 bg-white hover:shadow-sm border border-gray-100 rounded-2xl transition-all">
                 <div className="flex items-center space-x-1.5 mb-1 text-joy-pink">
                   <Heart className="w-4 h-4 fill-joy-pink text-joy-pink" />
-                  <span className="text-sm font-bold">METODE</span>
+                  <span className="text-sm font-bold">BELAJAR</span>
                 </div>
-                <span className="text-xl font-extrabold text-gray-800">Joyful Play</span>
+                <span className="text-sm font-extrabold text-gray-800 leading-tight">Indoor & Outdoor</span>
               </div>
             </motion.div>
           </div>
@@ -250,7 +249,7 @@ export default function Hero() {
                       </div>
                       <div>
                         <p className="text-xs font-bold text-gray-500 tracking-wider">LOKASI</p>
-                        <p className="text-sm font-extrabold text-brand-purple">Jl. Ahmad Yani No.49, Ps. I Muara Enim, Kec. Muara Enim, Kabupaten Muara Enim, Sumatera Selatan 31313</p>
+                        <p className="text-xs font-extrabold text-brand-purple">{BRAND_DATA.address}</p>
                       </div>
                     </div>
                   </div>
@@ -259,7 +258,7 @@ export default function Hero() {
 
               {/* Tiny decorative sticker */}
               <div className="absolute left-6 -bottom-4 bg-white px-4 py-2 rounded-full shadow-md border border-gray-100 flex items-center space-x-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
+                <Star className="w-2.5 h-2.5  fill-joy-green text-joy-green" />
                 <span className="text-xs font-bold text-gray-600">Terakreditasi BAN-PAUD</span>
               </div>
             </motion.div>

@@ -1,5 +1,5 @@
 import { MapPin, Phone, Mail, Clock, ShieldCheck, Heart, Send } from "lucide-react";
-import { BRAND_DATA, WHATSAPP_NUMBER } from "../data";
+import { BRAND_DATA, WHATSAPP_NUMBER, CONTACTS_DATA } from "../data";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <footer id="footer-control" className="bg-gray-950 text-gray-300">
-      
+
       {/* 1. Concluding Interactive Banner Section */}
       <div className="relative pt-24 pb-14 sm:pt-28 sm:pb-20 bg-brand-purple overflow-hidden text-center text-white">
         {/* Playful Wavy SVG Top Divider */}
@@ -30,7 +30,7 @@ export default function Footer() {
         {/* Background bubbles */}
         <div className="absolute top-1/2 left-10 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2" />
         <div className="absolute top-1/2 right-10 w-48 h-48 bg-white/10 rounded-full -translate-y-1/2" />
-        
+
         {/* Floating stickers */}
         <div className="absolute top-16 left-[15%] text-4xl select-none animate-float pointer-events-none z-10">🎈</div>
         <div className="absolute bottom-6 right-[15%] text-3xl select-none animate-float-slow pointer-events-none z-10">🌸</div>
@@ -61,7 +61,7 @@ export default function Footer() {
       {/* 2. Structured Information Blocks */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 items-start">
-          
+
           {/* Col 1: Brand details & accreditation */}
           <div className="lg:col-span-4 space-y-5" id="footer-col-brand">
             <div className="flex items-center space-x-3 text-white">
@@ -90,7 +90,7 @@ export default function Footer() {
             <div className="flex items-center space-x-2.5 text-xs text-gray-400 bg-white/5 border border-white/10 p-3 rounded-xl max-w-sm">
               <ShieldCheck className="w-5 h-5 text-joy-green shrink-0" />
               <span className="font-bold leading-normal">
-                Yayasan Al Azzhar resmi berizin Kemenkumham RI & Terakreditasi Badan Akreditasi Nasional (BAN-PAUD)
+                Lembaga Pendidikan Islam Al-Azzhar resmi berizin & {BRAND_DATA.accreditation}
               </span>
             </div>
           </div>
@@ -106,23 +106,28 @@ export default function Footer() {
                 <Clock className="w-4.5 h-4.5 text-joy-yellow shrink-0 mt-0.5" />
                 <div>
                   <span className="block font-bold text-gray-200">Jam Operasional:</span>
-                  <span className="block text-xs text-gray-400 font-semibold mt-0.5">Senin - Jumat: 07:30 - 12:00 WIB</span>
+                  <span className="block text-xs text-gray-400 font-semibold mt-0.5">Senin - Jumat: 07:15 - 12:00 WIB</span>
                   <span className="block text-xs text-gray-400 font-semibold">Sabtu: 08:00 - 11:00 WIB</span>
                 </div>
               </li>
 
               <li className="flex items-start space-x-3 text-sm">
-                <Phone className="w-4.5 h-4.5 text-joy-pink shrink-0 mt-0.5" />
+                <Phone className="w-4.5 h-4.5 text-joy-pink shrink-0 mt-1" />
                 <div>
-                  <span className="block font-bold text-gray-200">Kontak Admin Utama:</span>
-                  <a
-                    href="https://wa.me/6285368942200"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="block text-xs text-brand-whatsapp hover:underline font-extrabold mt-0.5"
-                  >
-                    +62 853-6894-2200 (Admin)
-                  </a>
+                  <span className="block font-bold text-gray-200 mb-1">Kontak Admin (WhatsApp):</span>
+                  <div className="space-y-1.5">
+                    {CONTACTS_DATA.map((contact, idx) => (
+                      <a
+                        key={idx}
+                        href={`https://wa.me/${contact.phone}?text=${encodeURIComponent("Halo " + contact.name + " Al Azzhar, saya tertarik mendaftarkan anak saya di TK & Playgroup Al-Azzhar Muara Enim.")}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="block text-xs text-brand-whatsapp hover:underline font-extrabold"
+                      >
+                        📞 {contact.display} ({contact.name})
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </li>
 
@@ -146,7 +151,7 @@ export default function Footer() {
             <div className="flex items-start space-x-3 text-xs md:text-sm">
               <MapPin className="w-4.5 h-4.5 text-brand-purple shrink-0 mt-0.5" />
               <span className="text-gray-400 font-semibold leading-relaxed">
-                Jl. Jenderal Sudirman No. 12, Kel. Pasar III, Kec. Muara Enim, Kabupaten Muara Enim, Sumatera Selatan, 31311.
+                {BRAND_DATA.address}
               </span>
             </div>
 

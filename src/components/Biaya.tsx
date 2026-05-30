@@ -43,7 +43,7 @@ export default function Biaya() {
     const listText = currentSelectedItems
       .map((item) => `- ${item.component}: ${formatRupiah(item.nominal)}`)
       .join("\n");
-    
+
     const textPrompt = `Halo Admin Al Azzhar, saya sudah mencoba simulasi kalkulator biaya masuk sekolah untuk jenjang *${activeProgram.programName}* di website. 
 
 Berikut adalah opsi rincian yang saya pilih:
@@ -63,7 +63,7 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
       className="py-16 md:py-24 bg-gray-50/50 border-y border-gray-100 scroll-mt-12"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-extrabold text-brand-purple uppercase tracking-widest bg-brand-purple/10 px-4 py-1.5 rounded-full inline-block mb-3">
@@ -79,10 +79,10 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          
+
           {/* LEFT AREA: INTERACTIVE CALCULATOR ENGINE */}
           <div className="lg:col-span-7 space-y-6">
-            
+
             {/* Tab switchers */}
             <div className="flex bg-white p-1 rounded-2xl border border-gray-150 shadow-xs">
               {FEE_STRUCTURES.map((program, idx) => (
@@ -90,11 +90,10 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
                   key={idx}
                   id={`btn-tab-biaya-${idx}`}
                   onClick={() => setActiveTabIdx(idx)}
-                  className={`flex-1 text-center py-3 px-4 text-xs md:text-sm font-extrabold rounded-xl transition-all cursor-pointer ${
-                    activeTabIdx === idx
-                      ? "bg-brand-purple text-white shadow-xs"
-                      : "text-gray-500 hover:text-gray-800"
-                  }`}
+                  className={`flex-1 text-center py-3 px-4 text-xs md:text-sm font-extrabold rounded-xl transition-all cursor-pointer ${activeTabIdx === idx
+                    ? "bg-brand-purple text-white shadow-xs"
+                    : "text-gray-500 hover:text-gray-800"
+                    }`}
                 >
                   {program.programName}
                 </button>
@@ -103,64 +102,86 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
 
             {/* List of items under active tab */}
             <div className="bg-white border rounded-3xl p-6 sm:p-8 shadow-xs space-y-4">
-              <div className="border-b border-gray-100 pb-4 mb-2">
-                <h3 className="text-md font-extrabold text-gray-950 uppercase tracking-wide">
-                  {activeProgram.programName}
-                </h3>
-                <p className="text-xs text-gray-400 font-bold mt-0.5">{activeProgram.subTitle}</p>
+              <div className="border-b border-gray-100 pb-4 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-md font-extrabold text-gray-950 uppercase tracking-wide">
+                    {activeProgram.programName}
+                  </h3>
+                  <p className="text-xs text-gray-400 font-bold mt-0.5">{activeProgram.subTitle}</p>
+                </div>
+                
+                {/* Program Details Badges */}
+                <div className="flex flex-wrap gap-2 shrink-0">
+                  <span className="text-[10px] font-black bg-brand-purple/10 text-brand-purple px-2.5 py-1 rounded-lg border border-brand-purple/20">
+                    🕒 {activeProgram.hours}
+                  </span>
+                  <span className="text-[10px] font-black bg-joy-pink/15 text-rose-700 px-2.5 py-1 rounded-lg border border-joy-pink/30">
+                    👶 Usia: {activeProgram.ageLimit}
+                  </span>
+                </div>
               </div>
 
               <div className="space-y-3.5" id="biaya-items-list">
                 {activeProgram.items.map((item) => {
                   const isChecked = !!selectedFeeIds[item.id];
+                  const isIncluded = item.nominal === 0;
+
                   return (
                     <motion.div
                       key={item.id}
-                      whileHover={{ scale: 1.01, x: 4 }}
-                      whileTap={{ scale: 0.99 }}
+                      whileHover={{ scale: isIncluded ? 1 : 1.01, x: isIncluded ? 0 : 4 }}
+                      whileTap={{ scale: isIncluded ? 1 : 0.99 }}
                       id={`biaya-item-container-${item.id}`}
-                      onClick={() => toggleFeeSelection(item.id)}
-                      className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex items-start space-x-4 ${
-                        isChecked
-                          ? "bg-brand-purple/5 border-brand-purple shadow-sm"
-                          : "bg-white border-dashed border-gray-250 opacity-75 hover:opacity-100"
+                      onClick={() => !isIncluded && toggleFeeSelection(item.id)}
+                      className={`p-4 rounded-2xl border-2 transition-all ${
+                        isIncluded
+                          ? "bg-emerald-50/30 border-emerald-250 cursor-default"
+                          : isChecked
+                          ? "bg-brand-purple/5 border-brand-purple shadow-sm cursor-pointer"
+                          : "bg-white border-dashed border-gray-250 opacity-75 hover:opacity-100 cursor-pointer"
                       }`}
                     >
-                      {/* Checkbox circle indicator */}
-                      <div
-                        className={`w-5.5 h-5.5 rounded-full border-2 flex items-center justify-center mt-0.5 shrink-0 transition-colors ${
-                          isChecked
-                            ? "bg-brand-purple border-brand-purple text-white animate-wiggle"
-                            : "bg-white border-gray-300"
-                        }`}
-                      >
-                        {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
-                      </div>
-
-                      {/* Component title & description */}
-                      <div className="flex-1">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-1">
-                          <span className="font-black text-gray-900 text-sm sm:text-base leading-tight">
-                            {item.component}
-                          </span>
-                          <span className="font-black text-brand-purple text-sm sm:text-base shrink-0">
-                            {formatRupiah(item.nominal)}
-                          </span>
-                        </div>
-                        <p className="text-xs text-gray-400 font-semibold leading-relaxed mb-2 pr-4">
-                          {item.description}
-                        </p>
-
-                        {/* One-time vs Monthly badge */}
-                        <span
-                          className={`inline-block text-[9px] font-black px-2.5 py-0.5 rounded-md ${
-                            item.isOneTime
-                              ? "bg-violet-100 text-brand-purple"
-                              : "bg-emerald-100 text-emerald-700"
+                      <div className="flex items-start space-x-4">
+                        {/* Checkbox circle indicator */}
+                        <div
+                          className={`w-5.5 h-5.5 rounded-full border-2 flex items-center justify-center mt-0.5 shrink-0 transition-colors ${
+                            isIncluded
+                              ? "bg-emerald-500 border-emerald-500 text-white"
+                              : isChecked
+                              ? "bg-brand-purple border-brand-purple text-white animate-wiggle"
+                              : "bg-white border-gray-300"
                           }`}
                         >
-                          {item.isOneTime ? "Sekali di Awal" : "Iuran Bulanan / Rutin"}
-                        </span>
+                          {(isIncluded || isChecked) && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                        </div>
+
+                        {/* Component title & description */}
+                        <div className="flex-1">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-1">
+                            <span className="font-black text-gray-900 text-sm sm:text-base leading-tight">
+                              {item.component}
+                            </span>
+                            <span className={`font-black text-sm sm:text-base shrink-0 ${isIncluded ? "text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-lg border border-emerald-200" : "text-brand-purple"}`}>
+                              {isIncluded ? "Termasuk (Free)" : formatRupiah(item.nominal)}
+                            </span>
+                          </div>
+                          <p className="text-xs text-gray-400 font-semibold leading-relaxed mb-2 pr-4">
+                            {item.description}
+                          </p>
+
+                          {/* One-time vs Monthly badge */}
+                          <span
+                            className={`inline-block text-[9px] font-black px-2.5 py-0.5 rounded-md ${
+                              isIncluded
+                                ? "bg-emerald-100 text-emerald-700"
+                                : item.isOneTime
+                                ? "bg-violet-100 text-brand-purple"
+                                : "bg-blue-100 text-blue-700"
+                            }`}
+                          >
+                            {isIncluded ? "Fasilitas Gratis Paket" : item.isOneTime ? "Sekali di Awal" : "Iuran Bulanan / Rutin"}
+                          </span>
+                        </div>
                       </div>
                     </motion.div>
                   );
@@ -189,16 +210,11 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
                 ))}
               </div>
 
-              {/* Cute savings tab badge */}
-              <div className="absolute -top-3.5 right-6 bg-joy-pink text-white px-4.5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider shadow-md -rotate-2 animate-bounce">
-                Simulasi Cerdas 🐷
-              </div>
-
               <div className="flex items-center space-x-2 text-brand-purple mb-4 pt-2">
                 <FileText className="w-5 h-5" />
                 <span className="text-xs font-black uppercase tracking-widest">Kalkulator Biaya</span>
               </div>
-              
+
               <h4 className="text-lg font-black text-gray-950 mb-4 leading-tight">
                 Simulasi Keuangan Masuk Sekolah
               </h4>
@@ -219,7 +235,7 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
               </div>
 
               {/* Large Grand Total Box */}
-              <div className="bg-joy-yellow/10 border-2 border-dashed border-joy-yellow p-4.5 rounded-2xl mb-6 animate-heartbeat-subtle">
+              <div className="bg-joy-yellow/10 border-2 border-dashed border-joy-yellow p-4.5 rounded-2xl mb-6">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-amber-950">ESTIMASI TOTAL AWAL</span>
                   <span className="text-[9px] font-black bg-joy-yellow text-amber-950 px-2 py-0.5 rounded-md shadow-xs">TERHITUNG</span>
@@ -234,11 +250,10 @@ Boleh kami menanyakan informasi ketersediaan kuota siswa baru, jadwal pendaftara
                 id="btn-share-biaya-wa"
                 onClick={handleShareCostToWhatsapp}
                 disabled={currentSelectedItems.length === 0}
-                className={`w-full flex items-center justify-center space-x-2 text-white py-4 rounded-2xl font-black text-sm shadow-md transition-all cursor-pointer hover:scale-103 active:scale-97 transform ${
-                  currentSelectedItems.length > 0
-                    ? "bg-brand-whatsapp hover:bg-emerald-500 hover:shadow-lg"
-                    : "bg-gray-300 pointer-events-none"
-                }`}
+                className={`w-full flex items-center justify-center space-x-2 text-white py-4 rounded-2xl font-black text-sm shadow-md transition-all cursor-pointer hover:scale-103 active:scale-97 transform ${currentSelectedItems.length > 0
+                  ? "bg-brand-whatsapp hover:bg-emerald-500 hover:shadow-lg"
+                  : "bg-gray-300 pointer-events-none"
+                  }`}
               >
                 <Send className="w-4.5 h-4.5" />
                 <span>Kirim Rincian ke Admin</span>

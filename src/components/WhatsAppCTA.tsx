@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { MessageCircle, X, ShieldAlert, BadgeInfo, GraduationCap } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { WHATSAPP_NUMBER, WHATSAPP_TEMPLATE_DEFAULT } from "../data";
+import { WHATSAPP_NUMBER, WHATSAPP_TEMPLATE_DEFAULT, CONTACTS_DATA } from "../data";
 
 export default function WhatsAppCTA() {
   const [showPopover, setShowPopover] = useState(false);
@@ -59,7 +59,7 @@ export default function WhatsAppCTA() {
             <div className="flex items-center justify-between mb-2 pb-2 border-b border-gray-100">
               <div className="flex items-center space-x-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-xs font-extrabold text-gray-900">Admin Utama Yayasan</span>
+                <span className="text-xs font-extrabold text-gray-900">Admin Al Azzhar</span>
               </div>
               <button
                 onClick={() => {
@@ -76,20 +76,41 @@ export default function WhatsAppCTA() {
 
             {/* Body Quote */}
             <p className="text-xs text-gray-600 leading-relaxed font-semibold mb-3">
-              Selamat datang Ayah & Bunda! Ada yang bisa kami bantu? Klik topik di bawah untuk memproses pesan Anda langsung secara instan:
+              Selamat datang Ayah & Bunda! Silakan pilih salah satu admin resmi kami di bawah ini untuk memulai chat:
             </p>
 
+            {/* Admin Contacts Choice */}
+            <div className="space-y-1.5 mb-3">
+              {CONTACTS_DATA.map((contact, idx) => (
+                <button
+                  key={idx}
+                  id={`whatsapp-popover-contact-${idx}`}
+                  onClick={() => {
+                    const url = `https://wa.me/${contact.phone}?text=${encodeURIComponent(WHATSAPP_TEMPLATE_DEFAULT)}`;
+                    window.open(url, "_blank", "referrer");
+                  }}
+                  className="w-full text-left bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/60 px-3 py-2 rounded-xl text-[10px] font-black text-emerald-800 transition-all cursor-pointer flex items-center justify-between group"
+                >
+                  <span>🟢 {contact.name} ({contact.display})</span>
+                  <span className="text-xs">💬</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="w-full h-px bg-gray-100 my-2" />
+
             {/* Inquiries Fast Chips */}
-            <div className="space-y-1.5 mb-2">
+            <div className="space-y-1.5 mb-1">
+              <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1.5">Pertanyaan Cepat:</p>
               {chips.map((chip, idx) => (
                 <button
                   key={idx}
                   id={`whatsapp-popover-chip-${idx}`}
                   onClick={() => handleOpeningAction(chip.msg)}
-                  className="w-full text-left bg-gray-55 hover:bg-brand-purple/5 border border-gray-100 hover:border-brand-purple/20 px-3 py-2 rounded-xl text-[11px] font-bold text-gray-700 hover:text-brand-purple transition-all cursor-pointer flex items-center justify-between group"
+                  className="w-full text-left bg-gray-55 hover:bg-brand-purple/5 border border-gray-100 hover:border-brand-purple/20 px-3 py-1.5 rounded-lg text-[10px] font-bold text-gray-600 hover:text-brand-purple transition-all cursor-pointer flex items-center justify-between group"
                 >
                   <span>{chip.label}</span>
-                  <span className="text-[10px] text-gray-300 group-hover:text-brand-purple font-bold">→</span>
+                  <span className="text-[9px] text-gray-300 group-hover:text-brand-purple font-bold">→</span>
                 </button>
               ))}
             </div>
