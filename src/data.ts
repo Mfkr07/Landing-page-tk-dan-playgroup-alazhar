@@ -21,11 +21,9 @@ export const BRAND_DATA = {
   registrationStart: "Desember 2025",
   academicYear: "2026 / 2027",
   missions: [
-    "Menanamkan kecintaan pada nilai-nilai keislaman melalui pembiasaan ibadah harian yang menyenangkan.",
-    "Mengembangkan kreativitas dan rasa ingin tahu anak secara optimal lewat metode active learning.",
-    "Membiasakan sikap mandiri, peduli sesama, dan tanggung jawab sejak dini.",
-    "Menyediakan lingkungan belajar yang aman, nyaman, higienis, serta asri.",
-    "Membangun kemitraan yang harmonis dengan orang tua dalam mengawal tumbuh kembang anak."
+    "Mewujudkan manusia muslim yang bertaqwa, berakhlak mulia, cakap, perdcaya diri, cinta tanah air dan berguna bagi masyarakat yang adil dan makmur dan di-ridhoi Allah SWT.",
+    "Memajukan dan mengembangkan pengetahuan umum, bahasa inggris, dan agama serta keterampilan untuk memajukan umat dan bangsa.",
+    "Bersama pendidikan dan kebudayaan sesuai UUD 1945 pasal 31.",
   ],
   programsUnggulan: [
     "Pembelajaran Karakter Per-tema Via Outbond",

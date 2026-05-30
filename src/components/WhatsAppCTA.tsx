@@ -40,7 +40,7 @@ export default function WhatsAppCTA() {
 
   return (
     <div id="floating-whatsapp-trigger" className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-      
+
       {/* 1. Welcoming Assistant Popover */}
       <AnimatePresence>
         {showPopover && (
@@ -139,15 +139,18 @@ export default function WhatsAppCTA() {
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => handleOpeningAction()}
+          onClick={() => {
+            setShowPopover(!showPopover);
+            setHasClosed(true);
+          }}
           className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-whatsapp text-white flex items-center justify-center shadow-xl hover:bg-emerald-500 transition-all cursor-pointer relative"
-          aria-label="Chat admin on WhatsApp"
+          aria-label="Tampilkan menu kontak WhatsApp"
           id="btn-floating-whatsapp-bubble"
         >
           {/* Pulsing ring layers */}
-          <span className="absolute inset-0 rounded-full bg-brand-whatsapp animate-ping opacity-25" />
+          <span className="absolute inset-0 rounded-full bg-brand-whatsapp opacity-25" />
           <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8" />
-          
+
           {/* Small orange unread marker notification */}
           {!showPopover && !hasClosed && (
             <span className="absolute top-0 right-0 w-3.5 h-3.5 bg-rose-500 rounded-full border-2 border-white flex items-center justify-center">

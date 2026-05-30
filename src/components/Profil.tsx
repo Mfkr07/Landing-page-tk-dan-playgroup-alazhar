@@ -53,7 +53,7 @@ export default function Profil() {
       className="py-16 md:py-24 bg-white relative scroll-mt-12"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-extrabold text-brand-purple uppercase tracking-widest bg-brand-purple/10 px-4 py-1.5 rounded-full inline-block mb-3">
@@ -71,22 +71,20 @@ export default function Profil() {
             <button
               id="tab-sejarah"
               onClick={() => setActiveTab("sejarah")}
-              className={`px-6 py-3 text-sm font-bold rounded-xl transition-all cursor-pointer ${
-                activeTab === "sejarah"
-                  ? "bg-white text-brand-purple shadow-sm"
-                  : "text-gray-500 hover:text-gray-800"
-              }`}
+              className={`px-6 py-3 text-sm font-bold rounded-xl transition-all cursor-pointer ${activeTab === "sejarah"
+                ? "bg-white text-brand-purple shadow-sm"
+                : "text-gray-500 hover:text-gray-800"
+                }`}
             >
               Sejarah & Profil Singkat
             </button>
             <button
               id="tab-visimisi"
               onClick={() => setActiveTab("visimisi")}
-              className={`px-6 py-3 text-sm font-bold rounded-xl transition-all cursor-pointer ${
-                activeTab === "visimisi"
-                  ? "bg-white text-brand-purple shadow-sm"
-                  : "text-gray-500 hover:text-gray-800"
-              }`}
+              className={`px-6 py-3 text-sm font-bold rounded-xl transition-all cursor-pointer ${activeTab === "visimisi"
+                ? "bg-white text-brand-purple shadow-sm"
+                : "text-gray-500 hover:text-gray-800"
+                }`}
             >
               Visi, Misi & Tujuan
             </button>
@@ -95,7 +93,7 @@ export default function Profil() {
 
         {/* Tabs Contents */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* LEFT INTERACTIVE AREA: CONTENT SPECIFIC */}
           <div className="lg:col-span-7 relative">
             {/* Playful star sticker */}
@@ -126,7 +124,7 @@ export default function Profil() {
                   <p className="text-gray-650 leading-relaxed font-semibold">
                     {BRAND_DATA.history}
                   </p>
-                  
+
                   <div className="p-6 bg-brand-purple/5 border border-brand-purple/10 rounded-2xl relative overflow-hidden">
                     <div className="absolute right-0 top-0 w-24 h-24 bg-brand-purple/5 rounded-full -mr-8 -mt-8" />
                     <h4 className="text-base font-extrabold text-brand-purple mb-2">Nilai Inti Bimbingan Kami:</h4>
@@ -137,18 +135,6 @@ export default function Profil() {
 
                   {/* Highlights Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 rounded-full bg-joy-green/20 flex items-center justify-center shrink-0 mt-0.5">
-                        <Check className="w-4 h-4 text-emerald-600 stroke-[3]" />
-                      </div>
-                      <span className="text-xs font-bold text-gray-700">Lingkungan sejuk 100% full AC</span>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 rounded-full bg-joy-yellow/20 flex items-center justify-center shrink-0 mt-0.5">
-                        <Check className="w-4 h-4 text-amber-600 stroke-[3]" />
-                      </div>
-                      <span className="text-xs font-bold text-gray-700">Rasio belajar kondusif (8 siswa/guru)</span>
-                    </div>
                     <div className="flex items-start space-x-3">
                       <div className="w-6 h-6 rounded-full bg-joy-pink/20 flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-4 h-4 text-rose-600 stroke-[3]" />
@@ -249,11 +235,10 @@ export default function Profil() {
                   return (
                     <div
                       key={index}
-                      className={`bg-white border rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:-rotate-0.5 active:scale-[0.99] ${
-                        isExpanded
-                          ? "border-brand-purple/40 shadow-md ring-4 ring-brand-purple/5"
-                          : "border-gray-100 shadow-sm"
-                      }`}
+                      className={`bg-white border rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:-rotate-0.5 active:scale-[0.99] ${isExpanded
+                        ? "border-brand-purple/40 shadow-md ring-4 ring-brand-purple/5"
+                        : "border-gray-100 shadow-sm"
+                        }`}
                     >
                       <button
                         onClick={() => toggleFaq(index)}
@@ -265,9 +250,8 @@ export default function Profil() {
                           <span>{faq.q}</span>
                         </span>
                         <ChevronDown
-                          className={`w-4 h-4 text-gray-400 shrink-0 transition-transform duration-300 ${
-                            isExpanded ? "transform rotate-180 text-brand-purple" : ""
-                          }`}
+                          className={`w-4 h-4 text-gray-400 shrink-0 transition-transform duration-300 ${isExpanded ? "transform rotate-180 text-brand-purple" : ""
+                            }`}
                         />
                       </button>
                       <AnimatePresence initial={false}>

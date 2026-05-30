@@ -66,18 +66,11 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-5" id="footer-col-brand">
             <div className="flex items-center space-x-3 text-white">
               <div className="w-10 h-10 rounded-full bg-brand-purple flex items-center justify-center text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-5.5 h-5.5"
-                >
-                  <path d="m12 3-1.912 5.886H3.886L9 12.553l-1.912 5.886L12 14.827l4.912 3.612L15 12.553l5.114-3.667h-6.202L12 3z" />
-                </svg>
+                <img
+                  src="/images/logo.png"
+                  alt="Logo Al-Azhar Muara Enim"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <span className="block text-lg font-bold tracking-tight">AL AZZHAR</span>

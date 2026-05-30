@@ -198,7 +198,7 @@ export default function Hero() {
                   <Star className="w-4 h-4 fill-joy-green" />
                   <span className="text-sm font-bold">METODE</span>
                 </div>
-                <span className="text-sm font-extrabold text-gray-800 leading-tight">Karakter & Outbond</span>
+                <span className="text-sm font-extrabold text-gray-800 leading-tight">Indoor & Outdoor</span>
               </div>
 
               <div className="flex flex-col items-center lg:items-start p-3 bg-white hover:shadow-sm border border-gray-100 rounded-2xl transition-all">
@@ -206,7 +206,7 @@ export default function Hero() {
                   <Heart className="w-4 h-4 fill-joy-pink text-joy-pink" />
                   <span className="text-sm font-bold">BELAJAR</span>
                 </div>
-                <span className="text-sm font-extrabold text-gray-800 leading-tight">Indoor & Outdoor</span>
+                <span className="text-sm font-extrabold text-gray-800 leading-tight">Karakter & Outbond</span>
               </div>
             </motion.div>
           </div>
@@ -235,7 +235,7 @@ export default function Hero() {
               <div className="bg-white p-3 rounded-bubble shadow-xl border border-gray-100 transform hover:rotate-1 transition-all duration-500">
                 <div className="overflow-hidden rounded-bubble aspect-symmetrical relative">
                   <img
-                    src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop"
+                    src="/images/Hero_section.png"
                     alt="Anak-anak gembira sedang belajar bersama guru di TK Al Azzhar Muara Enim"
                     referrerPolicy="no-referrer"
                     className="w-full h-[360px] md:h-[420px] object-cover rounded-bubble hover:scale-105 transition-transform duration-700"
