@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Baby, Compass, ChevronRight, Target, Waves } from "lucide-react";
+import { Baby, Compass, ChevronRight, BookOpen, Waves } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { FACILITIES_DATA } from "../data";
 
@@ -16,21 +16,21 @@ export default function Fasilitas() {
         ];
       case "fac-2":
         return [
-          "Rumput sintetis outdoor premium yang empuk meredam benturan.",
-          "Gawang futsal berukuran mini disesuaikan tinggi jangkauan balita.",
-          "Melatih kebugaran fisik, koordinasi motorik kasar, & kerjasama tim."
+          "Dilengkapi dengan meja-kursi ukuran anak-anak yang ergonomis dan aman.",
+          "Ventilasi sirkulasi udara alami yang optimal didukung kipas angin agar kelas tetap sejuk.",
+          "Pajangan hasil karya kreativitas anak untuk membangkitkan rasa percaya diri belajar."
         ];
       case "fac-3":
         return [
-          "Dilengkapi ayunan kokoh, perosotan fiberglass, & jungkat-jungkit SNI.",
+          "Dilengkapi ayunan kokoh, perosotan fiberglass, & jungkat-jungkit.",
           "Lingkungan hijau asri, teduh, dengan pagar keliling 100% aman.",
           "Pengawasan super melekat oleh guru pendamping selama jam bermain."
         ];
       case "fac-4":
         return [
-          "Kedalaman kolam dangkal khusus balita (40-50 cm) sangat aman.",
-          "Air kolam difilter berkala secara steril bebas zat kimia keras.",
-          "Wajib didampingi instruktur renang berpengalaman & guru."
+          "Kedalaman kolam renang yang sangat dangkal dan dirancang 100% aman bagi anak usia dini.",
+          "Dilengkapi dengan aneka mainan bola warna-warni ceria yang disukai anak-anak.",
+          "Wajib didampingi langsung oleh guru kelas pendamping untuk keamanan bermain air."
         ];
       default:
         return [];
@@ -64,7 +64,7 @@ export default function Fasilitas() {
             // Determine icon Component
             const getIcon = (name: string) => {
               if (name === "Compass") return <Compass className="w-6 h-6 text-brand-purple" />;
-              if (name === "Target") return <Target className="w-6 h-6 text-rose-500" />;
+              if (name === "BookOpen") return <BookOpen className="w-6 h-6 text-rose-500" />;
               if (name === "Baby") return <Baby className="w-6 h-6 text-amber-500" />;
               return <Waves className="w-6 h-6 text-emerald-600" />;
             };
@@ -82,7 +82,7 @@ export default function Fasilitas() {
                   return {
                     borderColor: "border-joy-pink/60",
                     hoverBorderColor: "hover:border-joy-pink",
-                    stickerText: "Olahraga ⚽",
+                    stickerText: "Belajar 📚",
                     stickerBg: "bg-joy-pink text-rose-950"
                   };
                 case "fac-3":
@@ -92,7 +92,7 @@ export default function Fasilitas() {
                     stickerText: "Bermain 🎈",
                     stickerBg: "bg-joy-yellow text-amber-950"
                   };
-                default:
+                default: // fac-4
                   return {
                     borderColor: "border-joy-green/60",
                     hoverBorderColor: "hover:border-joy-green",

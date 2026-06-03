@@ -73,19 +73,19 @@ export const NAVIGATION_ITEMS: NavItem[] = [
 export const FACILITIES_DATA: Facility[] = [
   {
     id: "fac-1",
-    name: "Mini Masjid",
-    description: "Fasilitas masjid ukuran anak-anak yang nyaman untuk mengenalkan ibadah sholat, berwudhu, serta membina pembiasaan akhlak Islami mulia sejak usia dini.",
+    name: "Mini Musholla",
+    description: "Fasilitas Musholla ukuran anak-anak yang nyaman untuk mengenalkan ibadah sholat, berwudhu, serta membina pembiasaan akhlak Islami mulia sejak usia dini.",
     bgClass: "bg-brand-purple/15 border-brand-purple/40 hover:bg-brand-purple/25",
     iconName: "Compass",
-    imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=800&auto=format&fit=crop"
+    imageUrl: "/images/musholla.jpg"
   },
   {
     id: "fac-2",
-    name: "Mini Lapangan Futsal",
-    description: "Lapangan olahraga khusus berukuran mini yang aman bagi anak-anak untuk melatih fisik motorik kasar, koordinasi tubuh, kelincahan, serta jiwa sportivitas tim.",
-    bgClass: "bg-joy-pink/15 border-joy-pink/40 hover:bg-joy-pink/25",
-    iconName: "Target",
-    imageUrl: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=800&auto=format&fit=crop"
+    name: "Ruang Kelas Yang Nyaman",
+    description: "Ruang kelas bersih, terang, dan penuh warna yang dirancang khusus untuk kenyamanan belajar dan stimulasi kreativitas si kecil tanpa tekanan.",
+    bgClass: "bg-joy-green/15 border-joy-green/40 hover:bg-joy-green/25",
+    iconName: "BookOpen",
+    imageUrl: "/images/ruang_kelas.jpg"
   },
   {
     id: "fac-3",
@@ -93,15 +93,15 @@ export const FACILITIES_DATA: Facility[] = [
     description: "Taman bermain luas, hijau, dan representatif dengan aneka ayunan, perosotan, jungkat-jungkit untuk memicu rasa riang gembira dan interaksi sosial anak.",
     bgClass: "bg-joy-yellow/15 border-joy-yellow/40 hover:bg-joy-yellow/25",
     iconName: "Baby",
-    imageUrl: "https://images.unsplash.com/photo-1566371486490-560ded239fe6?q=80&w=800&auto=format&fit=crop"
+    imageUrl: "/images/taman_bermain.png"
   },
   {
     id: "fac-4",
     name: "Kolam Renang Anak",
-    description: "Kolam air dangkal khusus balita berstandar keselamatan prima untuk melatih kemampuan motorik renang dasar, kesegaran fisik, serta keberanian bermain air.",
+    description: "Kolam renang dangkal yang aman dengan permainan bola warna-warni, dilengkapi pendampingan guru khusus selama sesi bermain air.",
     bgClass: "bg-joy-green/15 border-joy-green/40 hover:bg-joy-green/25",
     iconName: "Waves",
-    imageUrl: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=800&auto=format&fit=crop"
+    imageUrl: "/images/kolam_renang.jpg"
   }
 ];
 
@@ -111,28 +111,28 @@ export const ACTIVITIES_DATA: ActivityPhoto[] = [
     title: "Sentra Seni & Prakarya Mandiri",
     category: "Seni & Kreativitas",
     description: "Melukis dengan jari (finger painting), membuat karya kolase dari lilin malam, origami lucu, guna melatih saraf motorik halus serta keberanian berekspresi estetis.",
-    imageUrl: "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=800&auto=format&fit=crop"
+    imageUrl: "/images/prakarya2.jpg "
   },
   {
     id: "act-2",
     title: "Pendidikan Karakter & Hafalan Doa",
     category: "Imtaq & Karakter",
     description: "Kegiatan wudhu bersama, shalat berjamaah dhuha, muraja’ah surat pendek juz amma, membiasakan adab kesopanan sehari-hari (senyum, sapa, salam, sopan, santun).",
-    imageUrl: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800&auto=format&fit=crop"
+    imageUrl: "/images/belajar_agama.jpg"
   },
   {
     id: "act-3",
     title: "Eksplorasi Kebun & Sains Anak",
     category: "Sains & Lingkungan",
     description: "Menanam benih bunga sederhana di pot, melakukan uji coba pelangi dalam gelas air, melatih kepekaan ilmiah sederhana mengenai objek sekitar dengan terukur ceria.",
-    imageUrl: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?q=80&w=800&auto=format&fit=crop"
+    imageUrl: "/images/belajar_sains.jpg"
   },
   {
     id: "act-4",
     title: "Senam Ceria & Fun Motoric Outdoors",
     category: "Olahraga & Fisik",
     description: "Senam pagi terpadu di setiap hari Jumat dengan musik ritmis gembira, dilanjutkan dengan lomba lari estafet kecil untuk membangun kebersamaan tim dan fisik prima.",
-    imageUrl: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=800&auto=format&fit=crop"
+    imageUrl: "/images/senam.jpg"
   }
 ];
 
@@ -250,29 +250,29 @@ export const FEE_STRUCTURES: ProgramFee[] = [
 export const TESTIMONIALS_DATA: Testimonial[] = [
   {
     id: "test-1",
-    parentName: "Bunda Rini Kartika",
-    childName: "Rafandra (TK A)",
-    role: "Ibu Rumah Tangga, Muara Enim",
-    quote: "Awalnya Rafandra sangat pemalu dan sulit bergaul. Setelah bergabung di TK Al Azzhar, perkembangannya mencengangkan! Dia jadi antusias menghafal doa harian di rumah, bahkan setiap pagi bersemangat merapikan tas sendiri. Guru-guru di sini mendampingi anak penuh kasih sayang dan sabar luar biasa.",
+    parentName: "Umi Nafiah Febrini",
+    childName: "Fakhri (TK A)",
+    role: "Pegawai Negeri Sipil, Muara Enim",
+    quote: "Awalnya Fakhri sangat pemalu dan sulit bergaul. Setelah bergabung di TK Al Azzhar, perkembangannya mencengangkan! Dia jadi antusias menghafal doa harian di rumah, bahkan setiap pagi bersemangat merapikan tas sendiri. Guru-guru di sini mendampingi anak penuh kasih sayang dan sabar luar biasa.",
     rating: 5,
-    avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop"
+    avatarUrl: "/images/Febrini.jpg"
   },
   {
     id: "test-2",
-    parentName: "Bapak Aditya Nugraha",
+    parentName: "Bapak Cholid",
     childName: "Zahra (Playgroup)",
-    role: "Karyawan BUMN, Muara Enim",
+    role: "Camat Tanjung Agung, Muara Enim",
     quote: "Saya paling salut dengan kebersihan sekolah, area masjid ramah anak, dan lapangan bermainnya yang aman. Fasilitas lengkap membuat anak betah beraktivitas fisik tanpa gerah. Anak saya selalu pulang sekolah dengan wajah ceria dan bercerita tentang keseruan belajar sambil bermain di kelas.",
     rating: 5,
-    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop"
+    avatarUrl: "/images/cholid.jpg"
   },
   {
     id: "test-3",
-    parentName: "Bunda Fatmawati",
-    childName: "Kamil (TK B)",
-    role: "Tenaga Kesehatan, Muara Enim",
-    quote: "Sangat bersyukur menyekolahkan Kamil di sini. Metode pengenalan karakter harian dan pembiasaan sholat dhuha berjamaah melatih kemandirian spiritualnya sejak dini. Fasilitas lengkap, guru komunikatif, dan katering catering bergizi seimbang yang anak-anak dapatkan sangat membantu!",
+    parentName: "Bunda Oktavia Adjie",
+    childName: "Akbar (TK B)",
+    role: "Guru SMA Negeri 7 Muara Enim, Muara Enim",
+    quote: "Alhamdulillah, sangat bersyukur menyekolahkan Akbar di sini. Metode pengenalan karakter harian dan pembiasaan sholat dhuha berjamaah melatih kemandirian spiritualnya sejak dini. Fasilitas lengkap, guru komunikatif, dan katering catering bergizi seimbang yang anak-anak dapatkan sangat membantu!",
     rating: 5,
-    avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop"
+    avatarUrl: "/images/oktavia.jpg"
   }
 ];

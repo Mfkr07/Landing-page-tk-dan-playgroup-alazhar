@@ -1,19 +1,12 @@
 import { useState, MouseEvent } from "react";
-import { ZoomIn, X, MessageCircle, Heart, FolderCheck } from "lucide-react";
+import { ZoomIn, X, MessageCircle, Heart, FolderCheck, Facebook } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { ACTIVITIES_DATA, WHATSAPP_NUMBER } from "../data";
 import { ActivityPhoto } from "../types";
 
 export default function Galeri() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("Semua");
   const [selectedPhoto, setSelectedPhoto] = useState<ActivityPhoto | null>(null);
   const [likedPhotos, setLikedPhotos] = useState<Record<string, boolean>>({});
-
-  const categories = ["Semua", "Seni & Kreativitas", "Imtaq & Karakter", "Sains & Lingkungan", "Olahraga & Fisik"];
-
-  const filteredPhotos = selectedCategory === "Semua"
-    ? ACTIVITIES_DATA
-    : ACTIVITIES_DATA.filter(photo => photo.category === selectedCategory);
 
   const toggleLike = (id: string, e: MouseEvent) => {
     e.stopPropagation();
@@ -32,10 +25,10 @@ export default function Galeri() {
   return (
     <section
       id="galeri"
-      className="py-16 md:py-24 bg-white scroll-mt-12"
+      className="py-16 md:py-24 bg-gray-50 scroll-mt-12"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-xs font-extrabold text-brand-purple uppercase tracking-widest bg-brand-purple/10 px-4 py-1.5 rounded-full inline-block mb-3">
@@ -50,30 +43,10 @@ export default function Galeri() {
           <div className="w-16 h-1 bg-brand-purple mx-auto rounded-full mt-4" />
         </div>
 
-        {/* Filter Categories Chips */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10" id="gallery-filter-chips">
-          {categories.map((category) => (
-            <motion.button
-              key={category}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              id={`filter-chip-${category.toLowerCase().replace(/\s+/g, "")}`}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4.5 py-2.5 rounded-full text-xs font-black transition-all cursor-pointer shadow-xs ${
-                category === selectedCategory
-                  ? "bg-brand-purple text-white shadow-md shadow-brand-purple/15"
-                  : "bg-gray-100 hover:bg-gray-200 text-gray-600"
-              }`}
-            >
-              {category}
-            </motion.button>
-          ))}
-        </div>
-
         {/* Photos Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="gallery-photo-grid">
           <AnimatePresence mode="popLayout">
-            {filteredPhotos.map((photo, index) => {
+            {ACTIVITIES_DATA.map((photo, index) => {
               const isLiked = !!likedPhotos[photo.id];
               const rotationDeg = index % 2 === 0 ? -1.5 : 1.5;
 
@@ -98,7 +71,7 @@ export default function Galeri() {
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                       loading="lazy"
                     />
-                    
+
                     {/* Category Pill Overlays on top right */}
                     <div className="absolute top-2 left-2 bg-white/95 backdrop-blur-xs py-0.5 px-2 rounded-full text-[9px] font-bold text-brand-purple border border-brand-purple/10">
                       {photo.category}
@@ -130,6 +103,20 @@ export default function Galeri() {
               );
             })}
           </AnimatePresence>
+        </div>
+
+        {/* Facebook Link Button */}
+        <div className="flex justify-center mt-12">
+          <a
+            href="https://www.facebook.com/profile.php?id=100095022677052"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-brand-purple hover:bg-brand-purple/90 text-white font-extrabold px-8 py-3.5 rounded-full inline-flex items-center space-x-2 shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 cursor-pointer text-xs md:text-sm"
+            id="btn-gallery-more-facebook"
+          >
+            <Facebook className="w-4 h-4" />
+            <span>Lihat Lebih Banyak di Facebook</span>
+          </a>
         </div>
 
         {/* Lightbox Overlay Drawer Component */}

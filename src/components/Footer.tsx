@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, ShieldCheck, Heart, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ShieldCheck, Heart, Send, Facebook } from "lucide-react";
 import { BRAND_DATA, WHATSAPP_NUMBER, CONTACTS_DATA } from "../data";
 
 export default function Footer() {
@@ -23,7 +23,7 @@ export default function Footer() {
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M0,0 C300,90 900,90 1200,0 L1200,120 L0,120 Z" />
+            <path d="M0,0 C300,90 900,90 1200,0 Z" />
           </svg>
         </div>
 
@@ -128,7 +128,22 @@ export default function Footer() {
                 <Mail className="w-4.5 h-4.5 text-joy-green shrink-0 mt-0.5" />
                 <div>
                   <span className="block font-bold text-gray-200">Surel Resmi Yayasan:</span>
-                  <span className="block text-xs text-gray-400 font-medium mt-0.5">admin@alazzharmuaraenim.sch.id</span>
+                  <span className="block text-xs text-gray-400 font-medium mt-0.5">alazzhar2000@gmail.com</span>
+                </div>
+              </li>
+
+              <li className="flex items-start space-x-3 text-sm">
+                <Facebook className="w-4.5 h-4.5 text-blue-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="block font-bold text-gray-200">Halaman Facebook Resmi:</span>
+                  <a
+                    href="https://www.facebook.com/profile.php?id=100095022677052"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-xs text-gray-400 hover:text-blue-400 hover:underline font-semibold mt-0.5"
+                  >
+                    TK & Playgroup Al-Azzhar Muara Enim
+                  </a>
                 </div>
               </li>
             </ul>
@@ -164,15 +179,10 @@ export default function Footer() {
         </div>
 
         {/* 3. Bottom Credits */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-semibold gap-4">
-          <p className="text-center sm:text-left">
+        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col items-center justify-center text-xs text-gray-500 font-semibold gap-4">
+          <p className="text-center">
             &copy; {currentYear} TK & Playgroup Al Azzhar Muara Enim. Hak Cipta Dilindungi Undang-Undang.
           </p>
-          <div className="flex items-center space-x-1.5 justify-center">
-            <span>Dikembangkan dengan</span>
-            <Heart className="w-3.5 h-3.5 text-joy-pink fill-joy-pink" />
-            <span>untuk anak-anak hebat Muara Enim.</span>
-          </div>
         </div>
 
       </div>
