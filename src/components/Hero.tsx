@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowRight, Star, Heart, Shield, CheckCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { BRAND_DATA, WHATSAPP_NUMBER, WHATSAPP_TEMPLATE_DEFAULT } from "../data";

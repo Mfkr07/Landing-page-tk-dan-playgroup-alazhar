@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Check, Info, FileText, Send, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";

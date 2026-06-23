@@ -8,3 +8,9 @@ coverage/
 !.env.example
 doc/
 public/images
+.vercel
+
+# Next.js
+.next/
+out/
+next-env.d.ts

@@ -1,3 +1,5 @@
+"use client";
+
 import { MapPin, Phone, Mail, Clock, ShieldCheck, Heart, Send, Facebook } from "lucide-react";
 import { BRAND_DATA, WHATSAPP_NUMBER, CONTACTS_DATA } from "../data";
 

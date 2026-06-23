@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, MouseEvent } from "react";
 import { ZoomIn, X, MessageCircle, Heart, FolderCheck, Facebook } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";

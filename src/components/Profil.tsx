@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { BookOpen, Check, Target, Compass, Award, ShieldAlert, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";

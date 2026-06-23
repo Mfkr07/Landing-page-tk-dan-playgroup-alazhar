@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Baby, Compass, ChevronRight, BookOpen, Waves } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
