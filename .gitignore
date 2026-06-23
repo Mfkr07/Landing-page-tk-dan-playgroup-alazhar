@@ -7,7 +7,6 @@ coverage/
 .env*
 !.env.example
 doc/
-public/images
 .vercel
 
 # Next.js
